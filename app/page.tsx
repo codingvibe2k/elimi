@@ -160,7 +160,7 @@ const heroSlides = [
       "Expert nail care, spa treatments, and beauty services for a flawless, polished appearance.",
     ctaText: "Book Nails",
     ctaLink: "/nails",
-    bgImage: "/assets/shop/cat_beauty.jpg",
+    bgImage: "/assets/shop/cat_beauty.png",
   },
 ];
 

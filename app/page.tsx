@@ -287,7 +287,7 @@ export default function Home() {
                 aria-label="Open Elimi AI Assistant (Monica)"
               >
                 <img
-                  src="https://unsplash.com/photos/womans-face-xOjzehJ49Hk"
+                  src="/assets/elimi-images/ai_bot/image.png"
                   alt="Monica - Elimi AI Assistant"
                   className="w-full h-full object-cover"
                 />
@@ -372,7 +372,7 @@ export default function Home() {
               <img
                 alt="Monica - Elimi AI Assistant"
                 className="w-full h-full object-cover"
-                src="https://unsplash.com/photos/womans-face-xOjzehJ49Hk"
+                src="/assets/elimi-images/ai_bot/image.png"
               />
               <span className="absolute bottom-0 right-0 w-4 h-4 bg-[#0D52FF] rounded-full flex items-center justify-center text-white border border-white shadow-xs">
                 <Bot className="w-2.5 h-2.5" />
@@ -685,79 +685,6 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Mobile/Tablet Search Card */}
-            <AnimatePresence>
-              {currentSlide === 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5 }}
-                  className="lg:hidden w-full bg-white rounded-[24px] p-5 shadow-xl mt-auto mb-2 relative z-20"
-                >
-                  <div className="flex flex-col gap-4">
-                    {/* Location */}
-                    <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full border border-gray-100 bg-gray-50 flex items-center justify-center text-[#0D52FF]">
-                          <MapPin className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <div className="text-[11px] text-gray-500 font-medium mb-0.5">
-                            Location
-                          </div>
-                          <div className="text-sm font-bold text-[#181B25]">
-                            Arizona
-                          </div>
-                        </div>
-                      </div>
-                      <ChevronDown className="w-4 h-4 text-[#0D52FF]" />
-                    </div>
-
-                    {/* Property Type */}
-                    <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full border border-gray-100 bg-gray-50 flex items-center justify-center text-[#0D52FF]">
-                          <HomeIcon className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <div className="text-[11px] text-gray-500 font-medium mb-0.5">
-                            Property Type
-                          </div>
-                          <div className="text-sm font-bold text-[#181B25]">
-                            Villa
-                          </div>
-                        </div>
-                      </div>
-                      <ChevronDown className="w-4 h-4 text-[#0D52FF]" />
-                    </div>
-
-                    {/* Max Price */}
-                    <div className="flex items-center justify-between pb-1">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full border border-gray-100 bg-gray-50 flex items-center justify-center text-[#0D52FF]">
-                          <Wallet className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <div className="text-[11px] text-gray-500 font-medium mb-0.5">
-                            Max Price
-                          </div>
-                          <div className="text-sm font-bold text-[#0D52FF]">
-                            $300 000
-                          </div>
-                        </div>
-                      </div>
-                      <ChevronDown className="w-4 h-4 text-[#0D52FF]" />
-                    </div>
-
-                    <button className="w-full bg-[#0D52FF] hover:bg-blue-700 text-white font-bold py-3 rounded-full transition-colors shadow-lg mt-1 text-sm">
-                      Search
-                    </button>
                   </div>
                 </motion.div>
               )}

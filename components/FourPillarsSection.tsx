@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useRef, useMemo } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Car,
   Building2,
@@ -33,17 +33,25 @@ import {
   Truck,
   CreditCard,
   RotateCcw,
-  RefreshCw
-} from 'lucide-react';
-import { BOUTIQUE_PRODUCTS, Product } from '@/components/shop/ProductGrid';
-import { useRealtimeProducts } from '@/lib/firestore-products';
+  RefreshCw,
+} from "lucide-react";
+import { BOUTIQUE_PRODUCTS, Product } from "@/components/shop/ProductGrid";
+import { useRealtimeProducts } from "@/lib/firestore-products";
 
 function getLatest20Products(items: Product[]): Product[] {
   if (!items || items.length === 0) return [];
   return [...items]
     .sort((a: any, b: any) => {
-      const timeA = a.createdAt?.toMillis ? a.createdAt.toMillis() : a.createdAt ? new Date(a.createdAt).getTime() : 0;
-      const timeB = b.createdAt?.toMillis ? b.createdAt.toMillis() : b.createdAt ? new Date(b.createdAt).getTime() : 0;
+      const timeA = a.createdAt?.toMillis
+        ? a.createdAt.toMillis()
+        : a.createdAt
+          ? new Date(a.createdAt).getTime()
+          : 0;
+      const timeB = b.createdAt?.toMillis
+        ? b.createdAt.toMillis()
+        : b.createdAt
+          ? new Date(b.createdAt).getTime()
+          : 0;
       return timeB - timeA;
     })
     .slice(0, 20);
@@ -57,10 +65,11 @@ interface PillarYouTubeVideo {
 }
 
 const DEFAULT_PILLAR_VIDEO: PillarYouTubeVideo = {
-  youtubeId: 'cVSTKKrqKI8',
-  title: "RABA UKO SEBARUNDI YASHITSE MURI INKEREBUTSI DAY AHEREKEJWE N'UMUTAMBUKANYI WIWE",
-  thumbnail: 'https://i.ytimg.com/vi/cVSTKKrqKI8/hqdefault.jpg',
-  duration: '03:13'
+  youtubeId: "cVSTKKrqKI8",
+  title:
+    "RABA UKO SEBARUNDI YASHITSE MURI INKEREBUTSI DAY AHEREKEJWE N'UMUTAMBUKANYI WIWE",
+  thumbnail: "https://i.ytimg.com/vi/cVSTKKrqKI8/hqdefault.jpg",
+  duration: "03:13",
 };
 
 export default function FourPillarsSection() {
@@ -68,43 +77,54 @@ export default function FourPillarsSection() {
   const { products: allFirestoreProducts } = useRealtimeProducts();
 
   // Realtime YouTube video data from channel
-  const [mediaVideo, setMediaVideo] = useState<PillarYouTubeVideo>(DEFAULT_PILLAR_VIDEO);
+  const [mediaVideo, setMediaVideo] =
+    useState<PillarYouTubeVideo>(DEFAULT_PILLAR_VIDEO);
 
   useEffect(() => {
     async function fetchLiveVideo() {
       try {
-        const res = await fetch('/api/youtube');
+        const res = await fetch("/api/youtube");
         if (!res.ok) return;
         const data = await res.json();
-        if (data.videos && Array.isArray(data.videos) && data.videos.length > 0) {
+        if (
+          data.videos &&
+          Array.isArray(data.videos) &&
+          data.videos.length > 0
+        ) {
           const top = data.videos[0];
           setMediaVideo({
-            youtubeId: top.youtubeId || 'cVSTKKrqKI8',
+            youtubeId: top.youtubeId || "cVSTKKrqKI8",
             title: top.title || DEFAULT_PILLAR_VIDEO.title,
-            thumbnail: top.thumbnail || `https://i.ytimg.com/vi/${top.youtubeId}/hqdefault.jpg`,
-            duration: top.duration || '03:13'
+            thumbnail:
+              top.thumbnail ||
+              `https://i.ytimg.com/vi/${top.youtubeId}/hqdefault.jpg`,
+            duration: top.duration || "03:13",
           });
         }
       } catch (err) {
-        console.warn('Failed to load YouTube feed in FourPillarsSection:', err);
+        console.warn("Failed to load YouTube feed in FourPillarsSection:", err);
       }
     }
     fetchLiveVideo();
   }, []);
 
   // State for Pillar 1 (Rent vs Buy vs Real Estate)
-  const [pillar1Tab, setPillar1Tab] = useState<'Rent' | 'Buy' | 'Real Estate'>('Rent');
+  const [pillar1Tab, setPillar1Tab] = useState<"Rent" | "Buy" | "Real Estate">(
+    "Rent",
+  );
 
   // Background image state with fallbacks for high reliability
   const [pillar1Img, setPillar1Img] = useState(
-    'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80'
+    "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
   );
   const [pillar2Img, setPillar2Img] = useState(
-    'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80'
+    "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
   );
 
   // Pillar 3 & Pillar 4: Products from Firestore, randomized among the 20 latest uploaded ones on each refresh
-  const [shuffledProducts, setShuffledProducts] = useState<Product[]>(() => BOUTIQUE_PRODUCTS.slice(0, 5));
+  const [shuffledProducts, setShuffledProducts] = useState<Product[]>(() =>
+    BOUTIQUE_PRODUCTS.slice(0, 5),
+  );
   const [isShufflingShop, setIsShufflingShop] = useState(false);
 
   useEffect(() => {
@@ -139,13 +159,21 @@ export default function FourPillarsSection() {
   };
 
   const getChecklistItems = () => {
-    if (pillar1Tab === 'Buy') {
-      return ['Inspected Vehicles', 'Direct Import & Transfer', 'Guaranteed Titles'];
+    if (pillar1Tab === "Buy") {
+      return [
+        "Inspected Vehicles",
+        "Direct Import & Transfer",
+        "Guaranteed Titles",
+      ];
     }
-    if (pillar1Tab === 'Real Estate') {
-      return ['Furnished VIP Villas', 'Prime Land Plots', 'Legal Audit Included'];
+    if (pillar1Tab === "Real Estate") {
+      return [
+        "Furnished VIP Villas",
+        "Prime Land Plots",
+        "Legal Audit Included",
+      ];
     }
-    return ['Cars, SUVs, Vans', 'Verified Listings', 'Best Prices'];
+    return ["Cars, SUVs, Vans", "Verified Listings", "Best Prices"];
   };
 
   return (
@@ -161,7 +189,9 @@ export default function FourPillarsSection() {
             Our Four Strategic Pillars
           </h2>
           <p className="text-[#525866] text-sm sm:text-base leading-relaxed">
-            Delivering seamless luxury rentals, turnkey event security, creative video production, and verified commerce for Burundi and the Diaspora.
+            Delivering seamless luxury rentals, turnkey event security, creative
+            video production, and verified commerce for Burundi and the
+            Diaspora.
           </p>
         </div>
 
@@ -186,7 +216,11 @@ export default function FourPillarsSection() {
                 priority
                 unoptimized
                 referrerPolicy="no-referrer"
-                onError={() => setPillar1Img('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80')}
+                onError={() =>
+                  setPillar1Img(
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80",
+                  )
+                }
                 className="object-cover object-right lg:object-center group-hover:scale-105 transition-transform duration-700"
               />
               {/* Content Overlay Gradient: Left-to-right gradient overlay fading to transparent */}
@@ -200,11 +234,15 @@ export default function FourPillarsSection() {
                   Toyota Prado 2020
                 </div>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-extrabold text-[#181B25] tracking-tight">$60</span>
-                  <span className="text-[13px] font-normal text-[#525866]">/day</span>
+                  <span className="text-2xl font-extrabold text-[#181B25] tracking-tight">
+                    $60
+                  </span>
+                  <span className="text-[13px] font-normal text-[#525866]">
+                    /day
+                  </span>
                 </div>
                 <button
-                  onClick={() => setShowWhatsAppModal(true)}
+                  onClick={() => (window.location.href = "/cars")}
                   className="w-full bg-[#0D52FF] hover:bg-[#0B44D8] text-white text-[11px] font-semibold py-[5px] px-[14px] rounded-full shadow-sm transition text-center block mt-1.5 cursor-pointer"
                 >
                   Available Today
@@ -228,38 +266,39 @@ export default function FourPillarsSection() {
                   Mobility & Living
                 </h3>
                 <p className="text-[#525866] text-xs sm:text-sm leading-relaxed">
-                  Vehicles for rent or sale. Find your perfect ride or dream home.
+                  Vehicles for rent or sale. Find your perfect ride or dream
+                  home.
                 </p>
               </div>
 
               {/* Sub-Navigation Row */}
               <div className="flex items-center gap-1.5 pt-0.5 flex-wrap">
                 <button
-                  onClick={() => setPillar1Tab('Rent')}
+                  onClick={() => setPillar1Tab("Rent")}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
-                    pillar1Tab === 'Rent'
-                      ? 'bg-[#0D52FF] text-white shadow-sm'
-                      : 'bg-white/60 hover:bg-white/90 backdrop-blur-md text-[#181B25] border border-white/50'
+                    pillar1Tab === "Rent"
+                      ? "bg-[#0D52FF] text-white shadow-sm"
+                      : "bg-white/60 hover:bg-white/90 backdrop-blur-md text-[#181B25] border border-white/50"
                   }`}
                 >
                   Rent
                 </button>
                 <button
-                  onClick={() => setPillar1Tab('Buy')}
+                  onClick={() => setPillar1Tab("Buy")}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
-                    pillar1Tab === 'Buy'
-                      ? 'bg-[#0D52FF] text-white shadow-sm'
-                      : 'bg-white/60 hover:bg-white/90 backdrop-blur-md text-[#181B25] border border-white/50'
+                    pillar1Tab === "Buy"
+                      ? "bg-[#0D52FF] text-white shadow-sm"
+                      : "bg-white/60 hover:bg-white/90 backdrop-blur-md text-[#181B25] border border-white/50"
                   }`}
                 >
                   Buy
                 </button>
                 <button
-                  onClick={() => setPillar1Tab('Real Estate')}
+                  onClick={() => setPillar1Tab("Real Estate")}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
-                    pillar1Tab === 'Real Estate'
-                      ? 'bg-[#0D52FF] text-white shadow-sm'
-                      : 'bg-white/60 hover:bg-white/90 backdrop-blur-md text-[#181B25] border border-white/50'
+                    pillar1Tab === "Real Estate"
+                      ? "bg-[#0D52FF] text-white shadow-sm"
+                      : "bg-white/60 hover:bg-white/90 backdrop-blur-md text-[#181B25] border border-white/50"
                   }`}
                 >
                   Real Estate
@@ -273,7 +312,9 @@ export default function FourPillarsSection() {
                     <div className="w-4 h-4 rounded-full bg-[#0D52FF] text-white flex items-center justify-center shrink-0 shadow-sm">
                       <Check className="w-2.5 h-2.5 text-white stroke-[3]" />
                     </div>
-                    <span className="text-xs font-semibold text-[#181B25]">{item}</span>
+                    <span className="text-xs font-semibold text-[#181B25]">
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -295,9 +336,13 @@ export default function FourPillarsSection() {
             <div className="sm:hidden relative z-10 mt-4">
               <div className="bg-white/80 backdrop-blur-[12px] border border-white/50 rounded-[18px] p-3.5 shadow-lg flex items-center justify-between">
                 <div>
-                  <div className="text-[#181B25] text-xs font-medium">Toyota Prado 2020</div>
+                  <div className="text-[#181B25] text-xs font-medium">
+                    Toyota Prado 2020
+                  </div>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-xl font-extrabold text-[#181B25]">$60</span>
+                    <span className="text-xl font-extrabold text-[#181B25]">
+                      $60
+                    </span>
                     <span className="text-xs text-[#525866]">/day</span>
                   </div>
                 </div>
@@ -310,7 +355,6 @@ export default function FourPillarsSection() {
               </div>
             </div>
           </motion.div>
-
 
           {/* ===================================================
               PILLAR 02: Turnkey Event Bundles
@@ -331,7 +375,11 @@ export default function FourPillarsSection() {
                 priority
                 unoptimized
                 referrerPolicy="no-referrer"
-                onError={() => setPillar2Img('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80')}
+                onError={() =>
+                  setPillar2Img(
+                    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+                  )
+                }
                 className="object-cover object-right lg:object-center group-hover:scale-105 transition-transform duration-700"
               />
               {/* Left Side Gradient Overlay for Typography Contrast */}
@@ -365,11 +413,13 @@ export default function FourPillarsSection() {
                   "Protocol Staff",
                   "Catering",
                   "Photography & Video",
-                  "Printing & More"
+                  "Printing & More",
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#0D52FF] fill-[#0D52FF] text-white shrink-0" />
-                    <span className="text-xs font-semibold text-[#181B25]">{item}</span>
+                    <span className="text-xs font-semibold text-[#181B25]">
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -392,25 +442,34 @@ export default function FourPillarsSection() {
                 {/* Column 1 */}
                 <div className="flex flex-col items-center text-center px-1">
                   <Car className="w-4 h-4 text-[#181B25] mb-1" />
-                  <div className="text-[11px] font-bold text-[#181B25] leading-tight">VIP Vehicles</div>
-                  <div className="text-[10px] text-[#525866]">Premium Fleet</div>
+                  <div className="text-[11px] font-bold text-[#181B25] leading-tight">
+                    VIP Vehicles
+                  </div>
+                  <div className="text-[10px] text-[#525866]">
+                    Premium Fleet
+                  </div>
                 </div>
                 {/* Column 2 */}
                 <div className="flex flex-col items-center text-center px-1">
                   <Users className="w-4 h-4 text-[#0D52FF] mb-1" />
-                  <div className="text-[11px] font-bold text-[#181B25] leading-tight">Protocol Staff</div>
-                  <div className="text-[10px] text-[#525866]">Trained & Elegant</div>
+                  <div className="text-[11px] font-bold text-[#181B25] leading-tight">
+                    Protocol Staff
+                  </div>
+                  <div className="text-[10px] text-[#525866]">
+                    Trained & Elegant
+                  </div>
                 </div>
                 {/* Column 3 */}
                 <div className="flex flex-col items-center text-center px-1">
                   <Calendar className="w-4 h-4 text-[#0D52FF] mb-1" />
-                  <div className="text-[11px] font-bold text-[#181B25] leading-tight">Events Managed</div>
+                  <div className="text-[11px] font-bold text-[#181B25] leading-tight">
+                    Events Managed
+                  </div>
                   <div className="text-[10px] text-[#525866]">500+</div>
                 </div>
               </div>
             </div>
           </motion.div>
-
 
           {/* Bottom Row: Asymmetric 2-Column Grid (Pillar 3: 34% | Pillar 4: 66% for wide desktop cards) */}
           <div className="lg:col-span-2 grid grid-cols-1 lg:grid-cols-[34%_1fr] gap-4 lg:gap-5 items-stretch">
@@ -425,10 +484,11 @@ export default function FourPillarsSection() {
               className="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-[#141A29] border border-white/10 p-5 sm:p-6 lg:p-7 flex flex-col justify-between space-y-5 text-white shadow-xl group h-full"
             >
               {/* Ambient Radial Gradient Top-Right */}
-              <div 
+              <div
                 className="absolute top-0 right-0 w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] pointer-events-none rounded-full z-0"
                 style={{
-                  background: 'radial-gradient(circle at top right, rgba(13,82,255,0.22), transparent 60%)'
+                  background:
+                    "radial-gradient(circle at top right, rgba(13,82,255,0.22), transparent 60%)",
                 }}
               />
 
@@ -450,7 +510,8 @@ export default function FourPillarsSection() {
                       Elimi Média
                     </h3>
                     <p className="text-[#94A3B8] text-xs leading-relaxed max-w-xs">
-                      Watch. Enjoy. Discover. Entertainment that connects you to what matters.
+                      Watch. Enjoy. Discover. Entertainment that connects you to
+                      what matters.
                     </p>
                   </div>
 
@@ -481,7 +542,7 @@ export default function FourPillarsSection() {
                     referrerPolicy="no-referrer"
                     className="object-cover rounded-2xl group-hover/player:scale-105 transition-transform duration-500"
                   />
-                  
+
                   {/* Dark overlay for contrast */}
                   <div className="absolute inset-0 bg-black/30 group-hover/player:bg-black/20 transition-colors pointer-events-none rounded-2xl" />
 
@@ -498,17 +559,25 @@ export default function FourPillarsSection() {
                     <div className="hover:text-[#0D52FF] transition-colors">
                       <Play className="w-3.5 h-3.5 fill-white text-white" />
                     </div>
-                    <span className="text-[10px] font-mono font-medium text-white/90">{mediaVideo.duration}</span>
-                    
+                    <span className="text-[10px] font-mono font-medium text-white/90">
+                      {mediaVideo.duration}
+                    </span>
+
                     {/* Timeline slider */}
                     <div className="flex-1 h-1.5 bg-white/30 rounded-full relative overflow-hidden">
                       <div className="h-full bg-[#0D52FF] rounded-full w-2/5" />
                     </div>
 
-                    <div className="text-white/80 hover:text-white transition-colors" aria-label="Video settings">
+                    <div
+                      className="text-white/80 hover:text-white transition-colors"
+                      aria-label="Video settings"
+                    >
                       <Settings className="w-3.5 h-3.5" />
                     </div>
-                    <div className="text-white/80 hover:text-white transition-colors" aria-label="Fullscreen video">
+                    <div
+                      className="text-white/80 hover:text-white transition-colors"
+                      aria-label="Fullscreen video"
+                    >
                       <Maximize className="w-3.5 h-3.5" />
                     </div>
                   </div>
@@ -516,7 +585,10 @@ export default function FourPillarsSection() {
               </div>
 
               {/* BOTTOM SECTION: QUICK-SHOP MICRO-CARDS (Horizontal 2-column grid on mobile & tablet) */}
-              <div suppressHydrationWarning className="relative z-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-2.5 sm:gap-3 pt-1">
+              <div
+                suppressHydrationWarning
+                className="relative z-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-2.5 sm:gap-3 pt-1"
+              >
                 {(randomMediaProducts && randomMediaProducts.length >= 2
                   ? randomMediaProducts.slice(0, 2)
                   : BOUTIQUE_PRODUCTS.slice(0, 2)
@@ -541,19 +613,18 @@ export default function FourPillarsSection() {
                         {product.name}
                       </h4>
                       <p className="text-white font-extrabold text-[11px] sm:text-xs whitespace-nowrap">
-                        {product.priceBIF ? `${product.priceBIF.toLocaleString()} BIF` : `$${product.priceUSD || 0}`}
+                        {product.priceBIF
+                          ? `${product.priceBIF.toLocaleString()} BIF`
+                          : `$${product.priceUSD || 0}`}
                       </p>
                     </div>
-                    <div
-                      className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0D52FF] text-white flex items-center justify-center shrink-0 ml-auto shadow-sm"
-                    >
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0D52FF] text-white flex items-center justify-center shrink-0 ml-auto shadow-sm">
                       <ShoppingCart className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
                     </div>
                   </Link>
                 ))}
               </div>
             </motion.div>
-
 
             {/* ===================================================
                 PILLAR 04: Elimi Shop
@@ -605,7 +676,9 @@ export default function FourPillarsSection() {
                       title="Fresh random products"
                       aria-label="Refresh random products"
                     >
-                      <RefreshCw className={`w-3.5 h-3.5 ${isShufflingShop ? 'animate-spin text-[#0D52FF]' : ''}`} />
+                      <RefreshCw
+                        className={`w-3.5 h-3.5 ${isShufflingShop ? "animate-spin text-[#0D52FF]" : ""}`}
+                      />
                     </button>
                   </div>
                 </div>
@@ -650,8 +723,8 @@ export default function FourPillarsSection() {
                                 key={s}
                                 className={`w-3 h-3 ${
                                   s <= Math.floor(product.rating || 5)
-                                    ? 'fill-amber-400 text-amber-400'
-                                    : 'text-neutral-200 fill-neutral-200'
+                                    ? "fill-amber-400 text-amber-400"
+                                    : "text-neutral-200 fill-neutral-200"
                                 }`}
                               />
                             ))}
@@ -666,7 +739,9 @@ export default function FourPillarsSection() {
                       <div className="flex items-center justify-between pt-1 gap-2 min-w-0 mt-auto">
                         <div className="flex flex-col min-w-0">
                           <span className="text-[#0D52FF] font-black text-xs sm:text-[13px] tracking-tight whitespace-nowrap">
-                            {product.priceBIF ? `${product.priceBIF.toLocaleString()} BIF` : `$${product.priceUSD || 0}`}
+                            {product.priceBIF
+                              ? `${product.priceBIF.toLocaleString()} BIF`
+                              : `$${product.priceUSD || 0}`}
                           </span>
                           {product.priceUSD && (
                             <span className="text-[10px] text-neutral-400 font-medium whitespace-nowrap">
@@ -674,9 +749,7 @@ export default function FourPillarsSection() {
                             </span>
                           )}
                         </div>
-                        <div
-                          className="w-8 h-8 sm:w-8.5 sm:h-8.5 min-w-[32px] min-h-[32px] rounded-full border border-[#0D52FF]/20 hover:border-[#0D52FF] bg-[#0D52FF]/5 hover:bg-[#0D52FF] text-[#0D52FF] hover:text-white flex items-center justify-center transition-all shrink-0"
-                        >
+                        <div className="w-8 h-8 sm:w-8.5 sm:h-8.5 min-w-[32px] min-h-[32px] rounded-full border border-[#0D52FF]/20 hover:border-[#0D52FF] bg-[#0D52FF]/5 hover:bg-[#0D52FF] text-[#0D52FF] hover:text-white flex items-center justify-center transition-all shrink-0">
                           <ShoppingCart className="w-4 h-4" />
                         </div>
                       </div>
@@ -694,8 +767,12 @@ export default function FourPillarsSection() {
                       <ShieldCheck className="w-4 h-4 text-[#0D52FF]" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-[11px] sm:text-xs font-bold text-[#181B25] truncate">Authentic Products</div>
-                      <div className="text-[9px] sm:text-[10px] text-[#525866] truncate">Quality Guaranteed</div>
+                      <div className="text-[11px] sm:text-xs font-bold text-[#181B25] truncate">
+                        Authentic Products
+                      </div>
+                      <div className="text-[9px] sm:text-[10px] text-[#525866] truncate">
+                        Quality Guaranteed
+                      </div>
                     </div>
                   </div>
 
@@ -705,8 +782,12 @@ export default function FourPillarsSection() {
                       <Truck className="w-4 h-4 text-[#0D52FF]" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-[11px] sm:text-xs font-bold text-[#181B25] truncate">Fast Delivery</div>
-                      <div className="text-[9px] sm:text-[10px] text-[#525866] truncate">Across Burundi</div>
+                      <div className="text-[11px] sm:text-xs font-bold text-[#181B25] truncate">
+                        Fast Delivery
+                      </div>
+                      <div className="text-[9px] sm:text-[10px] text-[#525866] truncate">
+                        Across Burundi
+                      </div>
                     </div>
                   </div>
 
@@ -716,8 +797,12 @@ export default function FourPillarsSection() {
                       <CreditCard className="w-4 h-4 text-[#0D52FF]" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-[11px] sm:text-xs font-bold text-[#181B25] truncate">Secure Payments</div>
-                      <div className="text-[9px] sm:text-[10px] text-[#525866] truncate">Mobile Money</div>
+                      <div className="text-[11px] sm:text-xs font-bold text-[#181B25] truncate">
+                        Secure Payments
+                      </div>
+                      <div className="text-[9px] sm:text-[10px] text-[#525866] truncate">
+                        Mobile Money
+                      </div>
                     </div>
                   </div>
 
@@ -727,8 +812,12 @@ export default function FourPillarsSection() {
                       <RotateCcw className="w-4 h-4 text-[#0D52FF]" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-[11px] sm:text-xs font-bold text-[#181B25] truncate">Easy Returns</div>
-                      <div className="text-[9px] sm:text-[10px] text-[#525866] truncate">Hassle Free</div>
+                      <div className="text-[11px] sm:text-xs font-bold text-[#181B25] truncate">
+                        Easy Returns
+                      </div>
+                      <div className="text-[9px] sm:text-[10px] text-[#525866] truncate">
+                        Hassle Free
+                      </div>
                     </div>
                   </div>
                 </div>

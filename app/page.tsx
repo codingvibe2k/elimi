@@ -61,7 +61,7 @@ const heroSlides = [
     description:
       "ELIMI Protocol delivers exceptional hospitality and seamless event experiences with elegance, precision, and unmatched care.",
     ctaText: "Explore Our Services",
-    ctaLink: "#pillars",
+    ctaLink: "/protocol",
     bgImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAG8JHQdJflsaywqyMP6Za8Hj1vZ8yGaKEgmqnMn5ruzIpd8pc4ugb7CwrXuHdbooHVlWcsGoMo4McSMU6aE5a-AnK5EG9mfTQOCaWPcRfVSmhDXyBxumfC6PcO8bgNrirIqYaU8RzYlqI9ouMz6lkIl2svwb5sAVNFQxll3mwf6K95xC59R3C8OhA5CdbHEJUMZe7BKgtXMy_jApDD6g199bIV0Icif6jL4ufDRIbVArB2LFaw_3R7",
   },

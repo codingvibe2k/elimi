@@ -1,0 +1,6 @@
+{
+  "name": "ELIMI Platform",
+  "description": "ELIMI integrated platform offering VIP Protocol & Mobility, E-Commerce Boutique & Market, Elimi Média video broadcast and shoppable stream hub, and PrintBe custom solutions in Burundi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

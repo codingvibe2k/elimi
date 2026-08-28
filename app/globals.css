@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Roboto", "YouTube Sans", Arial, sans-serif;
+  --font-serif: "Roboto", "YouTube Sans", Arial, sans-serif;
+  --font-roboto: "Roboto", "YouTube Sans", Arial, sans-serif;
+  --font-youtube: "Roboto", "YouTube Sans", Arial, sans-serif;
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-900: #1e3a8a;
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+  --radius-6xl: 3rem;
+}
+
+*, ::before, ::after {
+  font-family: "Roboto", "YouTube Sans", Arial, sans-serif !important;
+}
+
+body {
+  font-family: "Roboto", "YouTube Sans", Arial, sans-serif !important;
+}
+
+/* Glassmorphism utility classes */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 35s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+.hero-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.25) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #c084fc 0%, #a78bfa 25%, #60a5fa 65%, #34d399 100%);
+}
+
+.curved-bg {
+  border-top-left-radius: 50% 60px;
+  border-top-right-radius: 50% 60px;
+}
+
+@media (min-width: 768px) {
+  .curved-bg {
+    border-top-left-radius: 50% 90px;
+    border-top-right-radius: 50% 90px;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+

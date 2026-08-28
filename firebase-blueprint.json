@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A store or boutique product available for purchase.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier of the product" },
+        "name": { "type": "string", "description": "Name of the product" },
+        "category": { "type": "string", "description": "Product category" },
+        "subCategory": { "type": "string", "description": "Sub-category name" },
+        "priceBIF": { "type": "number", "description": "Price in Burundian Francs" },
+        "priceUSD": { "type": "number", "description": "Price in USD" },
+        "seller": { "type": "string", "description": "Seller store name" },
+        "stockQuantity": { "type": "number", "description": "Available stock count" },
+        "inStock": { "type": "boolean", "description": "Whether item is in stock" },
+        "rating": { "type": "number", "description": "Average review rating" },
+        "reviewsCount": { "type": "number", "description": "Total review count" },
+        "image": { "type": "string", "description": "Main product image URL" },
+        "badge": { "type": "string", "description": "Optional badge" },
+        "description": { "type": "string", "description": "Product description" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" },
+        "updatedAt": { "type": "string", "description": "Last update timestamp" }
+      },
+      "required": ["id", "name", "category", "priceBIF", "priceUSD", "image", "description"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Collection of all boutique products for real-time shop display."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+Resolving dependencies
+Resolved, downloaded and extracted [568]
+- Checking registry.
+✔ Checking registry.
+- Updating files.
+ℹ Skipped 3 files: (files might be identical, use --overwrite to overwrite)
+  - components/ui/button.tsx
+  - components/ui/input.tsx
+  - src/components/blocks/footer-02.tsx

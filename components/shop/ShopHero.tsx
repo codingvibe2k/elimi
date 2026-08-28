@@ -1,9 +1,18 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'motion/react';
-import { Search, Shirt, Smartphone, Gem, ChevronLeft, ChevronRight, ChevronDown, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  Search,
+  Shirt,
+  Smartphone,
+  Gem,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  Sparkles,
+} from "lucide-react";
 
 interface ShopHeroProps {
   searchQuery: string;
@@ -15,36 +24,36 @@ interface ShopHeroProps {
 
 const CATEGORY_SHOWCASES = [
   {
-    id: 'Fashion',
-    title: 'Fashion & Luxury',
-    subtitle: 'Designer Suits, Handbags & Shoes',
-    image: '/assets/shop/cat_fashion.jpg',
-    badgeBg: 'bg-[#0D52FF]',
-    textColor: 'text-[#0D52FF]',
+    id: "Fashion",
+    title: "Fashion & Luxury",
+    subtitle: "Designer Suits, Handbags & Shoes",
+    image: "/assets/shop/cat_fashion.jpg",
+    badgeBg: "bg-[#0D52FF]",
+    textColor: "text-[#0D52FF]",
   },
   {
-    id: 'Electronics',
-    title: 'Tech & Devices',
-    subtitle: '4K Drones, Smartphones & Audio',
-    image: '/assets/shop/cat_tech.jpg',
-    badgeBg: 'bg-[#0A2351]',
-    textColor: 'text-[#0A2351]',
+    id: "Electronics",
+    title: "Tech & Devices",
+    subtitle: "4K Drones, Smartphones & Audio",
+    image: "/assets/shop/cat_tech.jpg",
+    badgeBg: "bg-[#0A2351]",
+    textColor: "text-[#0A2351]",
   },
   {
-    id: 'Cultural',
-    title: 'Cultural Heritage',
-    subtitle: 'Handwoven Agaseke & Royal Drums',
-    image: '/assets/shop/cat_cultural.jpg',
-    badgeBg: 'bg-amber-600',
-    textColor: 'text-amber-600',
+    id: "Cultural",
+    title: "Cultural Heritage",
+    subtitle: "Handwoven Agaseke & Royal Drums",
+    image: "/assets/shop/cat_cultural.jpg",
+    badgeBg: "bg-amber-600",
+    textColor: "text-amber-600",
   },
   {
-    id: 'Nails & Beauty',
-    title: 'Nails & Beauty',
-    subtitle: 'Salon Gel Kits & Organic Skincare',
-    image: '/assets/shop/cat_beauty.jpg',
-    badgeBg: 'bg-rose-600',
-    textColor: 'text-rose-600',
+    id: "Nails & Beauty",
+    title: "Nails & Beauty",
+    subtitle: "Salon Gel Kits & Organic Skincare",
+    image: "/assets/shop/cat_beauty.jpg",
+    badgeBg: "bg-rose-600",
+    textColor: "text-rose-600",
   },
 ];
 
@@ -60,13 +69,15 @@ export default function ShopHero({
   // Auto-slide effect fading in and out one by one into view
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % CATEGORY_SHOWCASES.length);
+      setCurrentSlideIndex(
+        (prevIndex) => (prevIndex + 1) % CATEGORY_SHOWCASES.length,
+      );
     }, 3500);
     return () => clearInterval(timer);
   }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && onSearchSubmit) {
+    if (e.key === "Enter" && onSearchSubmit) {
       onSearchSubmit();
     }
   };
@@ -83,9 +94,9 @@ export default function ShopHero({
         className="relative w-full rounded-[24px] sm:rounded-[32px] border border-[#0D52FF]/15 overflow-hidden shadow-sm p-6 sm:p-8 lg:p-10 min-h-[380px] lg:min-h-[420px] flex flex-col justify-center"
       >
         {/* Banner Background Image with soft gradient overlay */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 z-10">
           <Image
-            src="/assets/shop/hero-gradient-bg.jpg"
+            src="/assets/shop/hero_gradient_bg.jpg"
             alt="Elimi Boutique Banner Gradient Background"
             fill
             priority
@@ -107,11 +118,10 @@ export default function ShopHero({
 
             {/* Main Headline */}
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-[#181B25] tracking-tight leading-[1.15]">
-              Discover{' '}
-              <span className="text-[#0D52FF]">Fashion</span>,{' '}
-              <span className="text-[#0D52FF]">Tech</span>,{' '}
-              <span className="text-[#0D52FF]">Cultural Craft</span>{' '}
-              & <span className="text-[#0D52FF]">Beauty</span>
+              Discover <span className="text-[#0D52FF]">Fashion</span>,{" "}
+              <span className="text-[#0D52FF]">Tech</span>,{" "}
+              <span className="text-[#0D52FF]">Cultural Craft</span> &{" "}
+              <span className="text-[#0D52FF]">Beauty</span>
             </h1>
 
             {/* Subtitle */}
@@ -155,7 +165,7 @@ export default function ShopHero({
                   initial={{ opacity: 0, x: 30, scale: 0.95 }}
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={{ opacity: 0, x: -30, scale: 0.95 }}
-                  transition={{ duration: 0.6, ease: 'easeInOut' }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
                   onClick={() => setSelectedCategory(activeShowcase.id)}
                   className="relative w-full h-full flex flex-col items-center justify-center cursor-pointer group"
                 >
@@ -174,8 +184,12 @@ export default function ShopHero({
 
                   {/* Category Floating Tag Pill */}
                   <div className="mt-2 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/80 shadow-md flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full ${activeShowcase.badgeBg} animate-ping`} />
-                    <span className={`text-xs font-black tracking-tight ${activeShowcase.textColor}`}>
+                    <span
+                      className={`w-2 h-2 rounded-full ${activeShowcase.badgeBg} animate-ping`}
+                    />
+                    <span
+                      className={`text-xs font-black tracking-tight ${activeShowcase.textColor}`}
+                    >
                       {activeShowcase.title}
                     </span>
                     <span className="text-[10px] text-slate-400 font-medium">
@@ -193,8 +207,8 @@ export default function ShopHero({
                     onClick={() => setCurrentSlideIndex(idx)}
                     className={`h-1.5 rounded-full transition-all cursor-pointer ${
                       idx === currentSlideIndex
-                        ? 'w-5 bg-[#0D52FF]'
-                        : 'w-1.5 bg-slate-300 hover:bg-slate-400'
+                        ? "w-5 bg-[#0D52FF]"
+                        : "w-1.5 bg-slate-300 hover:bg-slate-400"
                     }`}
                     aria-label={`Show ${item.title}`}
                   />
@@ -207,4 +221,3 @@ export default function ShopHero({
     </div>
   );
 }
-

@@ -115,10 +115,10 @@ export default function FourPillarsSection() {
 
   // Background image state with fallbacks for high reliability
   const [pillar1Img, setPillar1Img] = useState(
-    "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
+    "/assets/elimi-images/4-pillar-section/PRADO.webp",
   );
   const [pillar2Img, setPillar2Img] = useState(
-    "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+    "/assets/protocol/PROTOCOL_SECTION.webp",
   );
 
   // Pillar 3 & Pillar 4: Products from Firestore, randomized among the 20 latest uploaded ones on each refresh

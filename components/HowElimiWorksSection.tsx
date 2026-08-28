@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'motion/react';
-import PartnerCards from '@/components/PartnerCards';
-import BuildYourPerfectEventSection from '@/components/BuildYourPerfectEventSection';
-import ElimiMediaSection from '@/components/ElimiMediaSection';
-import OurServicesSection from '@/components/OurServicesSection';
+import React, { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
+import PartnerCards from "@/components/PartnerCards";
+import BuildYourPerfectEventSection from "@/components/BuildYourPerfectEventSection";
+import ElimiMediaSection from "@/components/ElimiMediaSection";
+import OurServicesSection from "@/components/OurServicesSection";
 import {
   Shield,
   ShieldCheck,
@@ -31,8 +31,8 @@ import {
   Building2,
   Check,
   Smartphone,
-  Laptop
-} from 'lucide-react';
+  Laptop,
+} from "lucide-react";
 
 export default function HowElimiWorksSection() {
   // Active Testimonial Index for Carousel
@@ -40,18 +40,20 @@ export default function HowElimiWorksSection() {
 
   // Background image state with fallbacks
   const [step1Img, setStep1Img] = useState(
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80'
+    "/assets/elimi-images/how-to/Step-1.webp",
   );
   const [step2Img, setStep2Img] = useState(
-    'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1000&q=80'
+    "/assets/elimi-images/how-to/Step-2.webp",
   );
   const [step3Img, setStep3Img] = useState(
-    'https://images.unsplash.com/photo-1556742049-0a670f4a45a7?auto=format&fit=crop&w=1000&q=80'
+    "/assets/elimi-images/how-to/Step-3.webp",
   );
 
   // Interactive AI search demo state inside Step 1
-  const [aiPromptInput, setAiPromptInput] = useState('');
-  const [activeQuery, setActiveQuery] = useState('Find me a Prado in Bujumbura for 2 days');
+  const [aiPromptInput, setAiPromptInput] = useState("");
+  const [activeQuery, setActiveQuery] = useState(
+    "Find me a Prado in Bujumbura for 2 days",
+  );
   const [showAiModal, setShowAiModal] = useState(false);
 
   // Interactive Package modal state for Step 2
@@ -63,49 +65,50 @@ export default function HowElimiWorksSection() {
   // Testimonials Data
   const testimonials = [
     {
-      id: 't1',
-      name: 'Sarah N.',
-      role: 'Diaspora Client',
-      location: 'Belgium 🇧🇪',
-      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
-      fallbackAsset: '/assets/testimonials/sarah.jpg',
+      id: "t1",
+      name: "Sarah N.",
+      role: "Diaspora Client",
+      location: "Belgium 🇧🇪",
+      avatar:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
+      fallbackAsset: "/assets/testimonials/sarah.jpg",
       rating: 5,
       quote:
-        'Elimi made planning my wedding in Bujumbura from Belgium so easy. The VIP package, protocol team, and video coverage were absolutely perfect!'
+        "Elimi made planning my wedding in Bujumbura from Belgium so easy. The VIP package, protocol team, and video coverage were absolutely perfect!",
     },
     {
-      id: 't2',
-      name: 'Jean B.',
-      role: 'Business Owner',
-      location: 'Bujumbura 🇧🇮',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-      fallbackAsset: '/assets/testimonials/jean.jpg',
+      id: "t2",
+      name: "Jean B.",
+      role: "Business Owner",
+      location: "Bujumbura 🇧🇮",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+      fallbackAsset: "/assets/testimonials/jean.jpg",
       rating: 5,
       quote:
-        'Rented a Prado for a business trip to Gitega. The process was fast, the car was spotless, and the service was top-notch.'
+        "Rented a Prado for a business trip to Gitega. The process was fast, the car was spotless, and the service was top-notch.",
     },
     {
-      id: 't3',
-      name: 'Aline M.',
-      role: 'Customer',
-      location: 'Ngozi 🇧🇮',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
-      fallbackAsset: '/assets/testimonials/aline.jpg',
+      id: "t3",
+      name: "Aline M.",
+      role: "Customer",
+      location: "Ngozi 🇧🇮",
+      avatar:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      fallbackAsset: "/assets/testimonials/aline.jpg",
       rating: 5,
       quote:
-        'I discovered amazing products on Elimi Média and bought them instantly. Love the integration of content and shopping!'
-    }
+        "I discovered amazing products on Elimi Média and bought them instantly. Love the integration of content and shopping!",
+    },
   ];
 
   return (
     <section className="w-full bg-[#F8FAFC] py-16 px-4 sm:px-6 lg:px-12 text-[#181B25] font-sans antialiased">
       <div className="max-w-7xl mx-auto space-y-16">
-
         {/* ====================================================================
             SECTION 1: "HOW ELIMI WORKS" (3-STEP PROCESS)
            ==================================================================== */}
         <div className="space-y-8">
-          
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
@@ -119,7 +122,8 @@ export default function HowElimiWorksSection() {
 
               {/* Main Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#181B25]">
-                Simple Process. <span className="text-[#0D52FF]">Exceptional Experience.</span>
+                Simple Process.{" "}
+                <span className="text-[#0D52FF]">Exceptional Experience.</span>
               </h2>
 
               {/* Subtitle */}
@@ -149,7 +153,9 @@ export default function HowElimiWorksSection() {
                 <Shield className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-[#181B25]">Secure & Reliable</h4>
+                <h4 className="font-bold text-sm text-[#181B25]">
+                  Secure & Reliable
+                </h4>
                 <p className="text-xs text-[#525866]">Your data is protected</p>
               </div>
             </div>
@@ -160,7 +166,9 @@ export default function HowElimiWorksSection() {
                 <Lock className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-[#181B25]">100% Safe Payments</h4>
+                <h4 className="font-bold text-sm text-[#181B25]">
+                  100% Safe Payments
+                </h4>
                 <p className="text-xs text-[#525866]">Mobile Money & Bank</p>
               </div>
             </div>
@@ -171,7 +179,9 @@ export default function HowElimiWorksSection() {
                 <Headphones className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-[#181B25]">Lundi - Vendredi</h4>
+                <h4 className="font-bold text-sm text-[#181B25]">
+                  Lundi - Vendredi
+                </h4>
                 <p className="text-xs text-[#525866]">9h - 17h</p>
               </div>
             </div>
@@ -182,15 +192,18 @@ export default function HowElimiWorksSection() {
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-[#181B25]">Trusted by Thousands</h4>
-                <p className="text-xs text-[#525866]">Across Burundi & Beyond</p>
+                <h4 className="font-bold text-sm text-[#181B25]">
+                  Trusted by Thousands
+                </h4>
+                <p className="text-xs text-[#525866]">
+                  Across Burundi & Beyond
+                </p>
               </div>
             </div>
           </div>
 
           {/* 3-STEP CARD LAYOUT GRID */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
-
             {/* STEP 1: Search or Ask Elimi AI */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -207,7 +220,11 @@ export default function HowElimiWorksSection() {
                   fill
                   unoptimized
                   referrerPolicy="no-referrer"
-                  onError={() => setStep1Img('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1000&q=80')}
+                  onError={() =>
+                    setStep1Img(
+                      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1000&q=80",
+                    )
+                  }
                   className="w-full h-full object-cover object-right opacity-95 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-white via-white/50 via-30% to-transparent pointer-events-none" />
@@ -232,7 +249,8 @@ export default function HowElimiWorksSection() {
                 </h3>
 
                 <p className="text-[#525866] text-xs sm:text-sm leading-relaxed">
-                  Use the search bar or chat with our 24/7 AI assistant to find rentals, event services, or products.
+                  Use the search bar or chat with our 24/7 AI assistant to find
+                  rentals, event services, or products.
                 </p>
 
                 {/* CTAs */}
@@ -260,7 +278,6 @@ export default function HowElimiWorksSection() {
               </div>
             </motion.div>
 
-
             {/* STEP 2: Customize Your Package */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -277,7 +294,11 @@ export default function HowElimiWorksSection() {
                   fill
                   unoptimized
                   referrerPolicy="no-referrer"
-                  onError={() => setStep2Img('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80')}
+                  onError={() =>
+                    setStep2Img(
+                      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80",
+                    )
+                  }
                   className="w-full h-full object-cover object-right opacity-95 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-white via-white/50 via-30% to-transparent pointer-events-none" />
@@ -302,7 +323,8 @@ export default function HowElimiWorksSection() {
                 </h3>
 
                 <p className="text-[#525866] text-xs sm:text-sm leading-relaxed">
-                  Select dates, locations, or custom event options with real-time price estimation in BIF or USD.
+                  Select dates, locations, or custom event options with
+                  real-time price estimation in BIF or USD.
                 </p>
 
                 {/* Feature Tags Row */}
@@ -328,7 +350,6 @@ export default function HowElimiWorksSection() {
               </div>
             </motion.div>
 
-
             {/* STEP 3: Confirm via WhatsApp or Mobile Money */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -345,7 +366,11 @@ export default function HowElimiWorksSection() {
                   fill
                   unoptimized
                   referrerPolicy="no-referrer"
-                  onError={() => setStep3Img('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=80')}
+                  onError={() =>
+                    setStep3Img(
+                      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=80",
+                    )
+                  }
                   className="w-full h-full object-cover object-right opacity-95 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-white via-white/50 via-30% to-transparent pointer-events-none" />
@@ -370,7 +395,8 @@ export default function HowElimiWorksSection() {
                 </h3>
 
                 <p className="text-[#525866] text-xs sm:text-sm leading-relaxed">
-                  Connect directly with an Elimi agent on WhatsApp to finalize booking details and secure payment.
+                  Connect directly with an Elimi agent on WhatsApp to finalize
+                  booking details and secure payment.
                 </p>
 
                 {/* Double CTAs */}
@@ -402,7 +428,6 @@ export default function HowElimiWorksSection() {
                 </div>
               </div>
             </motion.div>
-
           </div>
         </div>
 
@@ -425,7 +450,6 @@ export default function HowElimiWorksSection() {
             SECTION 2: "WHAT OUR CLIENTS SAY" (TESTIMONIALS)
            ==================================================================== */}
         <div className="space-y-8 pt-6 border-t border-slate-200/80">
-          
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
@@ -438,7 +462,9 @@ export default function HowElimiWorksSection() {
             </div>
 
             <button
-              onClick={() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)}
+              onClick={() =>
+                setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
+              }
               className="text-[#0D52FF] hover:text-[#0B44D8] text-sm font-extrabold flex items-center gap-1 group self-start sm:self-auto"
             >
               <span>View All Testimonials</span>
@@ -456,7 +482,9 @@ export default function HowElimiWorksSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
                 className={`bg-white rounded-[20px] p-6 border transition-all flex flex-col justify-between relative shadow-xs hover:shadow-md ${
-                  activeTestimonial === idx ? 'border-[#0D52FF] ring-2 ring-[#0D52FF]/10' : 'border-slate-200/80'
+                  activeTestimonial === idx
+                    ? "border-[#0D52FF] ring-2 ring-[#0D52FF]/10"
+                    : "border-slate-200/80"
                 }`}
               >
                 {/* Background Quote Mark */}
@@ -478,7 +506,10 @@ export default function HowElimiWorksSection() {
                     {/* 5-Star Rating */}
                     <div className="flex items-center gap-1 mb-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#FFC107] text-[#FFC107]" />
+                        <Star
+                          key={i}
+                          className="w-4 h-4 fill-[#FFC107] text-[#FFC107]"
+                        />
                       ))}
                     </div>
                   </div>
@@ -492,9 +523,13 @@ export default function HowElimiWorksSection() {
                 {/* Client Info Footer */}
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <div>
-                    <h5 className="font-extrabold text-sm text-[#181B25]">{testimonial.name}</h5>
+                    <h5 className="font-extrabold text-sm text-[#181B25]">
+                      {testimonial.name}
+                    </h5>
                     <p className="text-xs text-[#525866] font-medium flex items-center gap-1.5 mt-0.5">
-                      <span>{testimonial.role} – {testimonial.location}</span>
+                      <span>
+                        {testimonial.role} – {testimonial.location}
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -510,8 +545,8 @@ export default function HowElimiWorksSection() {
                 onClick={() => setActiveTestimonial(idx)}
                 className={`transition-all ${
                   activeTestimonial === idx
-                    ? 'w-6 h-2 bg-[#0D52FF] rounded-full'
-                    : 'w-2 h-2 bg-slate-300 hover:bg-slate-400 rounded-full'
+                    ? "w-6 h-2 bg-[#0D52FF] rounded-full"
+                    : "w-2 h-2 bg-slate-300 hover:bg-slate-400 rounded-full"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
@@ -519,15 +554,12 @@ export default function HowElimiWorksSection() {
           </div>
         </div>
 
-
         {/* ====================================================================
             SECTION 3: SECURITY, TRUST & PARTNER LOGOS + BOTTOM CTA BANNER
            ==================================================================== */}
         <div className="space-y-6 pt-6 border-t border-slate-200/80">
-          
           {/* 2-Column Split: Security Left | Partners Right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
             {/* Left Card: Trusted. Secure. Reliable. */}
             <div className="bg-white rounded-[24px] p-6 sm:p-7 border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-5">
               <div className="flex items-start gap-4">
@@ -540,7 +572,8 @@ export default function HowElimiWorksSection() {
                     Trusted. Secure. Reliable.
                   </h4>
                   <p className="text-xs sm:text-sm text-[#525866] mt-1 leading-relaxed">
-                    We use bank-level security and verified payment channels to ensure every transaction is safe and protected.
+                    We use bank-level security and verified payment channels to
+                    ensure every transaction is safe and protected.
                   </p>
                 </div>
               </div>
@@ -577,7 +610,6 @@ export default function HowElimiWorksSection() {
                 <PartnerCards />
               </div>
             </div>
-
           </div>
 
           {/* Bottom Full-width Light Blue Banner */}
@@ -587,7 +619,8 @@ export default function HowElimiWorksSection() {
                 <Check className="w-5 h-5 stroke-[2.5]" />
               </div>
               <p className="text-xs sm:text-sm font-extrabold text-[#181B25] max-w-3xl leading-relaxed">
-                Join thousands of happy customers who trust Elimi for mobility, events, media, shopping and protocol services.
+                Join thousands of happy customers who trust Elimi for mobility,
+                events, media, shopping and protocol services.
               </p>
             </div>
 
@@ -599,9 +632,7 @@ export default function HowElimiWorksSection() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
-
         </div>
-
       </div>
 
       {/* ==================== INTERACTIVE MODALS ==================== */}
@@ -628,8 +659,13 @@ export default function HowElimiWorksSection() {
                   <Bot className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-extrabold text-xl text-[#181B25]">Elimi AI Assistant</h4>
-                  <p className="text-xs text-[#525866]">Ask anything about vehicles, protocol, or shopping in Burundi</p>
+                  <h4 className="font-extrabold text-xl text-[#181B25]">
+                    Elimi AI Assistant
+                  </h4>
+                  <p className="text-xs text-[#525866]">
+                    Ask anything about vehicles, protocol, or shopping in
+                    Burundi
+                  </p>
                 </div>
               </div>
 
@@ -638,13 +674,21 @@ export default function HowElimiWorksSection() {
                   <p className="font-bold text-[#181B25]">Try sample prompt:</p>
                   <div className="flex flex-wrap gap-2">
                     <button
-                      onClick={() => setAiPromptInput('Find me a Prado in Bujumbura for 2 days')}
+                      onClick={() =>
+                        setAiPromptInput(
+                          "Find me a Prado in Bujumbura for 2 days",
+                        )
+                      }
                       className="bg-white hover:bg-slate-100 text-[#0D52FF] font-semibold border border-slate-200 px-3 py-1.5 rounded-full text-xs"
                     >
                       &quot;Find me a Prado in Bujumbura for 2 days&quot;
                     </button>
                     <button
-                      onClick={() => setAiPromptInput('I need 4 protocol guards for a VIP reception')}
+                      onClick={() =>
+                        setAiPromptInput(
+                          "I need 4 protocol guards for a VIP reception",
+                        )
+                      }
                       className="bg-white hover:bg-slate-100 text-[#0D52FF] font-semibold border border-slate-200 px-3 py-1.5 rounded-full text-xs"
                     >
                       &quot;I need 4 protocol guards&quot;
@@ -705,16 +749,25 @@ export default function HowElimiWorksSection() {
                   <MessageCircle className="w-6 h-6 fill-[#25D366]" />
                 </div>
                 <div>
-                  <h4 className="font-extrabold text-xl text-[#181B25]">ELIMI WhatsApp Booking</h4>
-                  <p className="text-xs text-[#525866]">Instant Response Team</p>
+                  <h4 className="font-extrabold text-xl text-[#181B25]">
+                    ELIMI WhatsApp Booking
+                  </h4>
+                  <p className="text-xs text-[#525866]">
+                    Instant Response Team
+                  </p>
                 </div>
               </div>
 
               <div className="space-y-3 bg-[#F8FAFC] p-4 rounded-2xl text-xs text-[#525866] mb-6 border border-slate-200/80">
-                <p className="font-bold text-[#181B25]">How WhatsApp payment works:</p>
+                <p className="font-bold text-[#181B25]">
+                  How WhatsApp payment works:
+                </p>
                 <p>1. Our agent reviews your request immediately.</p>
                 <p>2. We generate an Lumicash or Ecocash payment prompt.</p>
-                <p>3. Your booking is instantly locked with 100% money-back guarantee.</p>
+                <p>
+                  3. Your booking is instantly locked with 100% money-back
+                  guarantee.
+                </p>
               </div>
 
               <a
@@ -731,7 +784,6 @@ export default function HowElimiWorksSection() {
           </div>
         )}
       </AnimatePresence>
-
     </section>
   );
 }

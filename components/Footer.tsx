@@ -1,44 +1,51 @@
-import { ArrowUpRight, Mail, Facebook, Instagram, Youtube, Phone } from "lucide-react"
+import {
+  ArrowUpRight,
+  Mail,
+  Facebook,
+  Instagram,
+  Youtube,
+  Phone,
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
-const links: { title: string; items: { label: string, href: string }[] }[] = [
-  { 
-    title: "Services", 
+const links: { title: string; items: { label: string; href: string }[] }[] = [
+  {
+    title: "Services",
     items: [
       { label: "Home", href: "/" },
       { label: "Cars", href: "/cars" },
       { label: "Media", href: "/media" },
-      { label: "Protocol", href: "/protocol" }
-    ] 
+      { label: "Protocol", href: "/protocol" },
+    ],
   },
-  { 
-    title: "Market", 
+  {
+    title: "Market",
     items: [
       { label: "Shop", href: "/shop" },
       { label: "Houses", href: "/houses" },
       { label: "PrintBe", href: "/printbe" },
-      { label: "Nails", href: "/nails" }
-    ] 
+      { label: "Nails", href: "/nails" },
+    ],
   },
-  { 
-    title: "Company", 
+  {
+    title: "Company",
     items: [
       { label: "About", href: "/#about" },
-      { label: "Contact", href: "/#contact" }
-    ] 
+      { label: "Contact", href: "/#contact" },
+    ],
   },
-  { 
-    title: "Legal", 
+  {
+    title: "Legal",
     items: [
       { label: "License", href: "/#license" },
       { label: "Privacy", href: "/#privacy" },
-      { label: "Terms", href: "/#terms" }
-    ] 
+      { label: "Terms", href: "/#terms" },
+    ],
   },
-]
+];
 
 const socials = [
   {
@@ -61,17 +68,20 @@ const socials = [
     icon: "/assets/icons/social/Youtube.png",
     href: "https://youtube.com/@elimiofficiel",
   },
-]
+];
 
 export default function Footer() {
-  const year = new Date().getFullYear()
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-background text-foreground border-t border-border mt-auto">
+    <footer className="bg-[#3d77f5] text-foreground border-t border-border mt-auto">
       <div className="mx-auto max-w-6xl px-6 pt-20 sm:px-10">
         <div className="flex flex-col items-start justify-between gap-6 border-b border-border pb-8 sm:flex-row sm:items-center">
           <div className="flex items-center gap-3">
-            <a href="/" className="inline-flex items-center gap-2 font-semibold tracking-tight">
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 font-semibold tracking-tight"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/assets/icons/ELIMI_LOGO.svg"
@@ -92,7 +102,10 @@ export default function Footer() {
               placeholder="Join our newsletter"
               className="h-9 flex-1 border-0 bg-transparent px-1 shadow-none focus-visible:outline-none focus-visible:ring-0"
             />
-            <Button size="sm" className="rounded-full bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-700">
+            <Button
+              size="sm"
+              className="rounded-full bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-700"
+            >
               Subscribe
             </Button>
           </form>
@@ -147,7 +160,11 @@ export default function Footer() {
                   aria-label={s.label}
                   className="grid size-7 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground overflow-hidden p-[2px]"
                 >
-                  <img src={s.icon} alt={s.label} className="size-full object-contain" />
+                  <img
+                    src={s.icon}
+                    alt={s.label}
+                    className="size-full object-contain"
+                  />
                 </a>
               ))}
             </div>
@@ -172,5 +189,5 @@ export default function Footer() {
         </p>
       </div>
     </footer>
-  )
+  );
 }

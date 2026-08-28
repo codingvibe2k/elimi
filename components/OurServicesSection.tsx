@@ -1,11 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import {
-  Layers
-} from 'lucide-react';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Layers } from "lucide-react";
 
 /**
  * ============================================================================
@@ -28,105 +26,133 @@ export interface ElimiService {
 
 export const SERVICES_LIST: ElimiService[] = [
   {
-    id: 'elimi-media',
-    name: 'ELIMI MEDIA',
-    category: 'Media & Production',
-    description: 'High-definition video production, documentaries, event coverage, and digital media stories across East Africa.',
-    image: '/assets/media/burundi-skit-cover.jpg',
-    badge: 'Media',
-    detailText: 'ELIMI Media produces top-tier cinematic videography, 4K multi-camera streaming, and promotional storytelling tailored for brands and major cultural events.',
-    link: '/media'
+    id: "elimi-media",
+    name: "ELIMI MEDIA",
+    category: "Media & Production",
+    description:
+      "High-definition video production, documentaries, event coverage, and digital media stories across East Africa.",
+    image:
+      "https://plus.unsplash.com/premium_photo-1688561384438-bfa9273e2c00?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fE1lZGlhfGVufDB8fDB8fHww",
+    badge: "Media",
+    detailText:
+      "ELIMI Media produces top-tier cinematic videography, 4K multi-camera streaming, and promotional storytelling tailored for brands and major cultural events.",
+    link: "/media",
   },
   {
-    id: 'elimi-shop',
-    name: 'ELIMI SHOP',
-    category: 'Verified E-Commerce',
-    description: 'Curated e-commerce hub for authentic African attire, high-end electronics, luxury watches, and local artisan goods.',
-    image: '/assets/shop/african-suit.jpg',
-    badge: 'Boutique',
-    detailText: 'Browse verified, guaranteed authentic items with fast delivery across Bujumbura and direct international shipping options.',
-    link: '/shop'
+    id: "elimi-shop",
+    name: "ELIMI SHOP",
+    category: "Verified E-Commerce",
+    description:
+      "Curated e-commerce hub for authentic African attire, high-end electronics, luxury watches, and local artisan goods.",
+    image: "/assets/shop/african-suit.jpg",
+    badge: "Boutique",
+    detailText:
+      "Browse verified, guaranteed authentic items with fast delivery across Bujumbura and direct international shipping options.",
+    link: "/shop",
   },
   {
-    id: 'elimi-car-rental',
-    name: 'ELIMI CAR RENTAL',
-    category: 'Luxury Fleet & Mobility',
-    description: 'Chauffeur-driven and self-drive luxury SUVs, Toyota Prados, Mercedes V-Class vans, and executive sedans.',
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80',
-    badge: 'Fleet',
-    detailText: 'Inspected, fully insured luxury fleet available for daily, weekly, or long-term lease in Burundi with professional drivers.',
-    link: '/cars'
+    id: "elimi-car-rental",
+    name: "ELIMI CAR RENTAL",
+    category: "Luxury Fleet & Mobility",
+    description:
+      "Chauffeur-driven and self-drive luxury SUVs, Toyota Prados, Mercedes V-Class vans, and executive sedans.",
+    image:
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80",
+    badge: "Fleet",
+    detailText:
+      "Inspected, fully insured luxury fleet available for daily, weekly, or long-term lease in Burundi with professional drivers.",
+    link: "/cars",
   },
   {
-    id: 'elimi-houses',
-    name: 'REAL ESTATE & HOUSES',
-    category: 'Luxury Living & Rentals',
-    description: 'Verified residential villas, modern executive apartments, and commercial real estate properties across Burundi.',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80',
-    badge: 'Real Estate',
-    detailText: 'Explore long-term rentals, luxury vacation stays, and verified real estate listings with full legal transparency.',
-    link: '/houses'
+    id: "elimi-houses",
+    name: "REAL ESTATE & HOUSES",
+    category: "Luxury Living & Rentals",
+    description:
+      "Verified residential villas, modern executive apartments, and commercial real estate properties across Burundi.",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+    badge: "Real Estate",
+    detailText:
+      "Explore long-term rentals, luxury vacation stays, and verified real estate listings with full legal transparency.",
+    link: "/houses",
   },
   {
-    id: 'elimi-protocol',
-    name: 'ELIMI PROTOCOL',
-    category: 'VIP Security & Escort',
-    description: 'Elite uniformed protocol guards, executive escorts, and multilingual VIP hostesses for high-profile events.',
-    image: '/assets/package_calculator/ELIMI_PROTOCOL_GIRL.webp',
-    badge: 'VIP Protocol',
-    detailText: 'Turnkey event protocol management ensuring guest safety, seamless arrivals, registration desk management, and executive hospitality.',
-    link: '/protocol'
+    id: "elimi-protocol",
+    name: "ELIMI PROTOCOL",
+    category: "VIP Security & Escort",
+    description:
+      "Elite uniformed protocol guards, executive escorts, and multilingual VIP hostesses for high-profile events.",
+    image: "/assets/package_calculator/ELIMI_PROTOCOL_GIRL.webp",
+    badge: "VIP Protocol",
+    detailText:
+      "Turnkey event protocol management ensuring guest safety, seamless arrivals, registration desk management, and executive hospitality.",
+    link: "/protocol",
   },
   {
-    id: 'elimi-digital-marketing',
-    name: 'DIGITAL MARKETING',
-    category: 'Social & Brand Strategy',
-    description: 'Strategic social media management, viral short-form video campaigns, SEO, and performance brand growth.',
-    image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=600&q=80',
-    badge: 'Marketing',
-    detailText: 'High-conversion advertising campaigns, social media management, influencer partnerships, and brand positioning.',
-    link: '/digital-marketing'
+    id: "elimi-digital-marketing",
+    name: "DIGITAL MARKETING",
+    category: "Social & Brand Strategy",
+    description:
+      "Strategic social media management, viral short-form video campaigns, SEO, and performance brand growth.",
+    image:
+      "https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=600&q=80",
+    badge: "Marketing",
+    detailText:
+      "High-conversion advertising campaigns, social media management, influencer partnerships, and brand positioning.",
+    link: "/digital-marketing",
   },
   {
-    id: 'elimi-web-dev',
-    name: 'WEB DEVELOPMENT',
-    category: 'Web & Digital Platforms',
-    description: 'Custom website development, mobile-responsive web apps, e-commerce platforms, and digital solutions.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
-    badge: 'Web Dev',
-    detailText: 'End-to-end web engineering, web applications, and e-commerce portals engineered for modern enterprises.',
-    link: '/digital-marketing#web-development'
+    id: "elimi-web-dev",
+    name: "WEB DEVELOPMENT",
+    category: "Web & Digital Platforms",
+    description:
+      "Custom website development, mobile-responsive web apps, e-commerce platforms, and digital solutions.",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    badge: "Web Dev",
+    detailText:
+      "End-to-end web engineering, web applications, and e-commerce portals engineered for modern enterprises.",
+    link: "/digital-marketing#web-development",
   },
   {
-    id: 'elimi-printbe',
-    name: 'PRINT BE',
-    category: 'Commercial Printing & Branding',
-    description: 'High-definition roll-up banners, custom corporate apparel, merchandise, signage, and large format printing.',
-    image: '/assets/printbe/rollup-banner.jpg',
-    badge: 'Printing',
-    detailText: 'Premium corporate print suite delivering promotional materials, custom attire, and event branding with fast turnaround.',
-    link: '/printbe'
+    id: "elimi-printbe",
+    name: "PRINT BE",
+    category: "Commercial Printing & Branding",
+    description:
+      "High-definition roll-up banners, custom corporate apparel, merchandise, signage, and large format printing.",
+    image:
+      "https://images.unsplash.com/photo-1503694978374-8a2fa686963a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fE1lZGlhfGVufDB8fDB8fHww",
+    badge: "Printing",
+    detailText:
+      "Premium corporate print suite delivering promotional materials, custom attire, and event branding with fast turnaround.",
+    link: "/printbe",
   },
   {
-    id: 'elimi-nails',
-    name: 'NAILS & BEAUTY STUDIO',
-    category: 'Salon & Beauty Care',
-    description: 'Professional gel nail art, manicures, pedicures, and executive beauty care services.',
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80',
-    badge: 'Beauty',
-    detailText: 'Luxury salon experience offering bespoke nail designs, hand and foot spa treatments, and beauty care.',
-    link: '/nails'
+    id: "elimi-nails",
+    name: "NAILS & BEAUTY STUDIO",
+    category: "Salon & Beauty Care",
+    description:
+      "Professional gel nail art, manicures, pedicures, and executive beauty care services.",
+    image:
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80",
+    badge: "Beauty",
+    detailText:
+      "Luxury salon experience offering bespoke nail designs, hand and foot spa treatments, and beauty care.",
+    link: "/nails",
   },
   {
-    id: 'elimi-events',
-    name: 'ELIMI EVENTS',
-    category: 'Turnkey Event Planning',
-    description: 'All-in-one event design, stage lighting, sound systems, catering, and decoration for weddings and galas.',
-    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80',
-    badge: 'Events',
-    detailText: 'Custom package builder combining vehicles, security, staging, catering, and media coverage into one seamless event management service.',
-    link: '/#events'
-  }
+    id: "elimi-events",
+    name: "ELIMI EVENTS",
+    category: "Turnkey Event Planning",
+    description:
+      "All-in-one event design, stage lighting, sound systems, catering, and decoration for weddings and galas.",
+    image:
+      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80",
+    badge: "Events",
+    detailText:
+      "Custom package builder combining vehicles, security, staging, catering, and media coverage into one seamless event management service.",
+    link: "/#events",
+  },
 ];
 
 export default function OurServicesSection() {
@@ -134,8 +160,10 @@ export default function OurServicesSection() {
   const marqueeItems = [...SERVICES_LIST, ...SERVICES_LIST, ...SERVICES_LIST];
 
   return (
-    <section className="w-full py-6 sm:py-10 px-0 text-[#181B25] font-sans antialiased" id="services">
-      
+    <section
+      className="w-full py-6 sm:py-10 px-0 text-[#181B25] font-sans antialiased"
+      id="services"
+    >
       {/* Section Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 mb-8 sm:mb-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -153,7 +181,8 @@ export default function OurServicesSection() {
 
             {/* Subtitle */}
             <p className="mt-2 text-[#525866] text-base sm:text-lg font-medium max-w-2xl">
-              From media production to VIP protocol, mobility, and verified commerce—discover the ELIMI ecosystem.
+              From media production to VIP protocol, mobility, and verified
+              commerce—discover the ELIMI ecosystem.
             </p>
           </div>
 
@@ -170,14 +199,14 @@ export default function OurServicesSection() {
          ==================================================================== */}
       <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-10 sm:py-16 my-2 sm:my-6">
         <div className="relative w-[140vw] left-1/2 -translate-x-1/2 bg-[#080E1A] text-white shadow-2xl py-10 sm:py-14 transform -rotate-2 scale-105 sm:scale-108">
-          
           {/* Top Scalloped Stamp Demi-Circles Cutout */}
           <div
             className="absolute top-0 left-0 right-0 h-[18px] w-full z-20 pointer-events-none"
             style={{
-              backgroundImage: 'radial-gradient(circle at 11px 0px, #F8FAFC 9px, transparent 9.5px)',
-              backgroundSize: '22px 18px',
-              backgroundRepeat: 'repeat-x'
+              backgroundImage:
+                "radial-gradient(circle at 11px 0px, #F8FAFC 9px, transparent 9.5px)",
+              backgroundSize: "22px 18px",
+              backgroundRepeat: "repeat-x",
             }}
           />
 
@@ -185,9 +214,10 @@ export default function OurServicesSection() {
           <div
             className="absolute bottom-0 left-0 right-0 h-[18px] w-full z-20 pointer-events-none"
             style={{
-              backgroundImage: 'radial-gradient(circle at 11px 18px, #F8FAFC 9px, transparent 9.5px)',
-              backgroundSize: '22px 18px',
-              backgroundRepeat: 'repeat-x'
+              backgroundImage:
+                "radial-gradient(circle at 11px 18px, #F8FAFC 9px, transparent 9.5px)",
+              backgroundSize: "22px 18px",
+              backgroundRepeat: "repeat-x",
             }}
           />
 
@@ -229,7 +259,6 @@ export default function OurServicesSection() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }

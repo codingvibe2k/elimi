@@ -62,8 +62,7 @@ const heroSlides = [
       "ELIMI Protocol delivers exceptional hospitality and seamless event experiences with elegance, precision, and unmatched care.",
     ctaText: "Explore Our Services",
     ctaLink: "/protocol",
-    bgImage:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAG8JHQdJflsaywqyMP6Za8Hj1vZ8yGaKEgmqnMn5ruzIpd8pc4ugb7CwrXuHdbooHVlWcsGoMo4McSMU6aE5a-AnK5EG9mfTQOCaWPcRfVSmhDXyBxumfC6PcO8bgNrirIqYaU8RzYlqI9ouMz6lkIl2svwb5sAVNFQxll3mwf6K95xC59R3C8OhA5CdbHEJUMZe7BKgtXMy_jApDD6g199bIV0Icif6jL4ufDRIbVArB2LFaw_3R7",
+    bgImage: "/assets/protocol/PROTOCOL_SECTION.webp",
   },
   {
     id: "shop",
@@ -79,7 +78,7 @@ const heroSlides = [
       "Discover curated collections of premium fashion and lifestyle products from top brands.",
     ctaText: "Shop Now",
     ctaLink: "/shop",
-    bgImage: "/assets/shop/hero-showcase.jpg",
+    bgImage: "/assets/shop/shop_hero_showcase.jpg",
   },
   {
     id: "cars",
@@ -95,7 +94,8 @@ const heroSlides = [
       "Rent or buy top-tier luxury and performance vehicles for any occasion with unmatched service.",
     ctaText: "View Cars",
     ctaLink: "/cars",
-    bgImage: "/assets/shop/mercedes-vclass.webp",
+    bgImage:
+      "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&q=80&w=1600",
   },
   {
     id: "houses",

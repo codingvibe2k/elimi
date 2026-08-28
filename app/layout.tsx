@@ -1,24 +1,30 @@
-import type {Metadata} from 'next';
-import { Roboto } from 'next/font/google';
-import { Suspense } from 'react';
-import './globals.css'; // Global styles
-import AIChatAssistant from '@/components/AIChatAssistant';
-import TopProgressBar from '@/components/TopProgressBar';
-import Footer from '@/components/Footer';
+import type { Metadata } from "next";
+import { Roboto } from "next/font/google";
+import { Suspense } from "react";
+import "./globals.css"; // Global styles
+import AIChatAssistant from "@/components/AIChatAssistant";
+import TopProgressBar from "@/components/TopProgressBar";
+import Footer from "@/components/Footer";
 
 const roboto = Roboto({
-  weight: ['300', '400', '500', '700', '900'],
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
+  weight: ["300", "400", "500", "700", "900"],
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: 'ELIMI Boutique & Services',
-  description: 'Curated e-commerce boutique & verified professional services platform in Burundi.',
+  title: "ELIMI Boutique & Services",
+  description:
+    "Curated e-commerce boutique & verified professional services platform in Burundi.",
+  icons: [{ rel: "icon", url: "/assets/icons/ELIMI_LOGO.svg" }],
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${roboto.variable}`}>
       <head>
@@ -27,7 +33,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
       </head>
-      <body suppressHydrationWarning className="font-sans antialiased bg-slate-50 text-slate-900">
+      <body
+        suppressHydrationWarning
+        className="font-sans antialiased bg-slate-50 text-slate-900"
+      >
         <Suspense fallback={null}>
           <TopProgressBar />
         </Suspense>
@@ -38,4 +47,3 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     </html>
   );
 }
-

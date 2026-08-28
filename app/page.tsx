@@ -482,7 +482,7 @@ export default function Home() {
                       <div className="flex -space-x-3">
                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden relative">
                           <Image
-                            src="/assets/elimi-images/how-to/Step-1.webp"
+                            src="https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjBwZW9wbGV8ZW58MHx8MHx8fDA%3D"
                             alt="Client"
                             fill
                             className="object-cover"
@@ -490,7 +490,7 @@ export default function Home() {
                         </div>
                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden relative">
                           <Image
-                            src="/assets/elimi-images/how-to/Step-2.webp"
+                            src="https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjBwZW9wbGV8ZW58MHx8MHx8fDA%3D"
                             alt="Client"
                             fill
                             className="object-cover"
@@ -498,7 +498,7 @@ export default function Home() {
                         </div>
                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden relative">
                           <Image
-                            src="/assets/elimi-images/how-to/Step-3.webp"
+                            src="https://images.unsplash.com/photo-1565884280295-98eb83e41c65?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmxhY2slMjBwZW9wbGV8ZW58MHx8MHx8fDA%3D"
                             alt="Client"
                             fill
                             className="object-cover"
@@ -564,7 +564,7 @@ export default function Home() {
                         <div className="flex -space-x-3">
                           <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden relative bg-slate-200">
                             <Image
-                              src="/assets/elimi-images/how-to/Step-1.webp"
+                              src="https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjBwZW9wbGV8ZW58MHx8MHx8fDA%3D"
                               alt="Client"
                               fill
                               className="object-cover"
@@ -572,7 +572,7 @@ export default function Home() {
                           </div>
                           <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden relative bg-slate-200">
                             <Image
-                              src="/assets/elimi-images/how-to/Step-2.webp"
+                              src="https://plus.unsplash.com/premium_photo-1664267832242-cc73a2fa4903?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YmxhY2slMjBwZW9wbGV8ZW58MHx8MHx8fDA%3D"
                               alt="Client"
                               fill
                               className="object-cover"
@@ -580,7 +580,7 @@ export default function Home() {
                           </div>
                           <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden relative bg-slate-200">
                             <Image
-                              src="/assets/elimi-images/how-to/Step-3.webp"
+                              src="https://images.unsplash.com/photo-1565884280295-98eb83e41c65?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmxhY2slMjBwZW9wbGV8ZW58MHx8MHx8fDA%3D"
                               alt="Client"
                               fill
                               className="object-cover"

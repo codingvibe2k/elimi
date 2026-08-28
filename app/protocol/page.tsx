@@ -1,11 +1,27 @@
-'use client';
+"use client";
 
-import React, { useState, useRef } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import ElimiHeader from '@/components/ElimiHeader';
-import { motion } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, Star, ChevronRight, MapPin, Phone, Mail, Instagram, Linkedin, Twitter, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import React, { useState, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import ElimiHeader from "@/components/ElimiHeader";
+import { motion } from "motion/react";
+import {
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Star,
+  ChevronRight,
+  MapPin,
+  Phone,
+  Mail,
+  Instagram,
+  Linkedin,
+  Twitter,
+  ArrowRight,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 
 interface ServiceItem {
   id: string;
@@ -16,7 +32,13 @@ interface ServiceItem {
   posterUrl: string;
 }
 
-function ServiceVideoCard({ service, variants }: { service: ServiceItem; variants: any }) {
+function ServiceVideoCard({
+  service,
+  variants,
+}: {
+  service: ServiceItem;
+  variants: any;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -28,11 +50,14 @@ function ServiceVideoCard({ service, variants }: { service: ServiceItem; variant
       videoRef.current.pause();
       setIsPlaying(false);
     } else {
-      videoRef.current.play().then(() => {
-        setIsPlaying(true);
-      }).catch((err) => {
-        console.warn('Video playback interrupted:', err);
-      });
+      videoRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.warn("Video playback interrupted:", err);
+        });
     }
   };
 
@@ -44,13 +69,13 @@ function ServiceVideoCard({ service, variants }: { service: ServiceItem; variant
   };
 
   return (
-    <motion.div 
+    <motion.div
       id={`protocol-service-card-${service.id}`}
       variants={variants}
       className="group flex flex-col h-full rounded-2xl overflow-hidden border border-gray-200/80 bg-white transition-all duration-300 hover:shadow-xl hover:border-blue-300 hover:-translate-y-1"
     >
       {/* Real Video Player Container */}
-      <div 
+      <div
         className="relative w-full aspect-[4/3] bg-gray-900 flex items-center justify-center overflow-hidden border-b border-gray-100 cursor-pointer"
         onClick={togglePlay}
       >
@@ -77,11 +102,11 @@ function ServiceVideoCard({ service, variants }: { service: ServiceItem; variant
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <button
             type="button"
-            aria-label={isPlaying ? 'Pause video' : 'Play video'}
+            aria-label={isPlaying ? "Pause video" : "Play video"}
             className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition-all duration-300 pointer-events-auto shadow-lg backdrop-blur-sm ${
               isPlaying
-                ? 'bg-black/60 text-white opacity-0 group-hover:opacity-100 hover:bg-[#0D52FF]'
-                : 'bg-white/95 text-[#0D52FF] opacity-100 hover:scale-110 hover:bg-[#0D52FF] hover:text-white'
+                ? "bg-black/60 text-white opacity-0 group-hover:opacity-100 hover:bg-[#0D52FF]"
+                : "bg-white/95 text-[#0D52FF] opacity-100 hover:scale-110 hover:bg-[#0D52FF] hover:text-white"
             }`}
             onClick={togglePlay}
           >
@@ -96,15 +121,19 @@ function ServiceVideoCard({ service, variants }: { service: ServiceItem; variant
         {/* Video Controls Badges (Mute & Status) */}
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
           <span className="text-[10px] font-semibold tracking-wider uppercase bg-black/60 backdrop-blur-md text-white px-2 py-0.5 rounded shadow">
-            {isPlaying ? 'Playing' : 'Video'}
+            {isPlaying ? "Playing" : "Video"}
           </span>
           <button
             type="button"
             onClick={toggleMute}
-            aria-label={isMuted ? 'Unmute' : 'Mute'}
+            aria-label={isMuted ? "Unmute" : "Mute"}
             className="w-7 h-7 rounded-full bg-black/60 hover:bg-[#0D52FF] text-white flex items-center justify-center transition-colors pointer-events-auto shadow backdrop-blur-sm"
           >
-            {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+            {isMuted ? (
+              <VolumeX className="w-3.5 h-3.5" />
+            ) : (
+              <Volume2 className="w-3.5 h-3.5" />
+            )}
           </button>
         </div>
       </div>
@@ -126,7 +155,7 @@ export default function ProtocolPage() {
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   };
 
   const staggerContainer = {
@@ -134,9 +163,9 @@ export default function ProtocolPage() {
     animate: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
-      }
-    }
+        staggerChildren: 0.15,
+      },
+    },
   };
 
   return (
@@ -149,7 +178,7 @@ export default function ProtocolPage() {
         {/* Gradient Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <Image
-            src="/assets/shop/hero-gradient-bg.jpg"
+            src="/assets/shop/hero_gradient_bg.jpg"
             alt="Gradient Background"
             fill
             priority
@@ -163,7 +192,7 @@ export default function ProtocolPage() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-center">
             {/* Left Content */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
@@ -174,9 +203,11 @@ export default function ProtocolPage() {
                 <span className="text-[#0D52FF]">PROTOCOL &amp;</span> <br />
                 VIP Services
               </h1>
-              
+
               <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-lg leading-relaxed">
-                Operating in Burundi with international-standard event coordination, airport arrival hosting, delegation transport, and official logistics representation.
+                Operating in Burundi with international-standard event
+                coordination, airport arrival hosting, delegation transport, and
+                official logistics representation.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
@@ -198,15 +229,15 @@ export default function ProtocolPage() {
             </motion.div>
 
             {/* Right Image */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
               className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-square flex items-center justify-center lg:justify-end"
             >
               <div className="relative w-full h-full max-h-[540px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-gray-100">
-                <Image 
-                  src="/assets/elimi-images/4-pillar-section/PROTOCOL_SCTION.webp" 
+                <Image
+                  src="/assets/protocol/protocol_Girls.webp"
                   alt="Protocol Services"
                   fill
                   unoptimized
@@ -227,7 +258,7 @@ export default function ProtocolPage() {
 
       {/* INTRODUCTION SECTION */}
       <section className="w-full bg-white px-4 sm:px-6 md:px-8 lg:px-16 py-14 sm:py-20 lg:py-24 border-b border-gray-200/80">
-        <motion.div 
+        <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-80px" }}
@@ -238,7 +269,9 @@ export default function ProtocolPage() {
             Our Purpose &amp; Standard
           </span>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif font-bold leading-snug sm:leading-relaxed text-gray-900">
-            ELIMI Protocol delivers elite diplomatic standards in Burundi, specializing in summit event coordination, airport arrival hosting &amp; assistance, VIP handling, and logistics representation.
+            ELIMI Protocol delivers elite diplomatic standards in Burundi,
+            specializing in summit event coordination, airport arrival hosting
+            &amp; assistance, VIP handling, and logistics representation.
           </h2>
           <div>
             <a
@@ -253,13 +286,16 @@ export default function ProtocolPage() {
       </section>
 
       {/* OUR SERVICES SECTION */}
-      <section id="services" className="w-full bg-[#f8f9fc] px-4 sm:px-6 md:px-8 lg:px-16 py-14 sm:py-20 lg:py-28">
+      <section
+        id="services"
+        className="w-full bg-[#f8f9fc] px-4 sm:px-6 md:px-8 lg:px-16 py-14 sm:py-20 lg:py-28"
+      >
         <div className="max-w-7xl mx-auto space-y-10 sm:space-y-14">
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold tracking-wider uppercase text-[#0D52FF] bg-blue-50 border border-blue-200/70 px-3 py-1 rounded-full inline-block mb-2.5">
               Protocol Solutions
             </span>
-            <motion.h2 
+            <motion.h2
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
@@ -270,7 +306,7 @@ export default function ProtocolPage() {
             </motion.h2>
           </div>
 
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-60px" }}
@@ -279,43 +315,51 @@ export default function ProtocolPage() {
           >
             {[
               {
-                id: 'event-coordination',
-                title: 'Event Coordination',
-                desc: 'Comprehensive planning and flawless execution of high-profile corporate, governmental, and international summits.',
+                id: "event-coordination",
+                title: "Event Coordination",
+                desc: "Comprehensive planning and flawless execution of high-profile corporate, governmental, and international summits.",
                 icon: ShieldCheck,
                 // Replace videoUrl with your actual video link (e.g., /videos/events.mp4)
-                videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-                posterUrl: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80',
+                videoUrl:
+                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                posterUrl:
+                  "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80",
               },
               {
-                id: 'airport-arrival',
-                title: 'Airport Arrival Hosting',
-                desc: 'Seamless airport tarmac reception, fast-track customs clearance, and elite reception for visiting delegations.',
+                id: "airport-arrival",
+                title: "Airport Arrival Hosting",
+                desc: "Seamless airport tarmac reception, fast-track customs clearance, and elite reception for visiting delegations.",
                 icon: Sparkles,
                 // Replace videoUrl with your actual video link
-                videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-                posterUrl: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80',
+                videoUrl:
+                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+                posterUrl:
+                  "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80",
               },
               {
-                id: 'vip-handling',
-                title: 'VIP Handling',
-                desc: 'Specialized protocol security, armored convoys, discretion, and bespoke care for diplomats and VIP guests.',
+                id: "vip-handling",
+                title: "VIP Handling",
+                desc: "Specialized protocol security, armored convoys, discretion, and bespoke care for diplomats and VIP guests.",
                 icon: Star,
                 // Replace videoUrl with your actual video link
-                videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-                posterUrl: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
+                videoUrl:
+                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+                posterUrl:
+                  "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
               },
               {
-                id: 'logistics-rep',
-                title: 'Logistics Representation',
-                desc: 'Professional logistics management, executive ground transport, and official representation across Burundi.',
+                id: "logistics-rep",
+                title: "Logistics Representation",
+                desc: "Professional logistics management, executive ground transport, and official representation across Burundi.",
                 icon: MapPin,
                 // Replace videoUrl with your actual video link
-                videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4',
-                posterUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-              }
+                videoUrl:
+                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+                posterUrl:
+                  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
+              },
             ].map((service) => (
-              <ServiceVideoCard 
+              <ServiceVideoCard
                 key={service.id}
                 service={service}
                 variants={fadeInUp}
@@ -333,12 +377,16 @@ export default function ProtocolPage() {
               <span className="text-xs font-bold tracking-wider uppercase text-[#0D52FF] bg-blue-50 border border-blue-200/70 px-3 py-1 rounded-full inline-block mb-1.5">
                 Photo Highlights
               </span>
-              <h3 className="font-serif text-xl sm:text-2xl font-bold text-gray-900">Protocol in Action</h3>
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-gray-900">
+                Protocol in Action
+              </h3>
             </div>
-            <span className="text-xs sm:text-sm text-gray-500">Official delegations &amp; summit services</span>
+            <span className="text-xs sm:text-sm text-gray-500">
+              Official delegations &amp; summit services
+            </span>
           </div>
 
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -346,12 +394,16 @@ export default function ProtocolPage() {
             className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6"
           >
             {[
-              'https://picsum.photos/seed/protocol1/600/800',
-              'https://picsum.photos/seed/protocol2/600/800',
-              'https://picsum.photos/seed/protocol3/600/800',
-              'https://picsum.photos/seed/protocol4/600/800'
+              "https://picsum.photos/seed/protocol1/600/800",
+              "https://picsum.photos/seed/protocol2/600/800",
+              "https://picsum.photos/seed/protocol3/600/800",
+              "https://picsum.photos/seed/protocol4/600/800",
             ].map((img, i) => (
-              <motion.div key={i} variants={fadeInUp} className="relative aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-gray-200/80 bg-gray-100">
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="relative aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-gray-200/80 bg-gray-100"
+              >
                 <Image
                   src={img}
                   alt={`Highlight ${i + 1}`}
@@ -369,7 +421,7 @@ export default function ProtocolPage() {
       {/* TRAININGS SCHEDULE SECTION */}
       <section className="w-full bg-[#f8f9fc] px-4 sm:px-6 md:px-8 lg:px-16 py-12 sm:py-16 lg:py-20 border-t border-b border-gray-200/70">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8">
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -383,18 +435,20 @@ export default function ProtocolPage() {
               Trainings &amp; Diplomatic Etiquette
             </h2>
             <p className="text-gray-600 leading-relaxed text-xs sm:text-sm md:text-base">
-              Mastering International Protocol, Etiquette, and Soft Diplomacy for Business Success: ELIMI helps organizations, public figures, and executives in Burundi master these essential skills.
+              Mastering International Protocol, Etiquette, and Soft Diplomacy
+              for Business Success: ELIMI helps organizations, public figures,
+              and executives in Burundi master these essential skills.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="w-full md:w-auto"
           >
-            <a 
+            <a
               href="tel:+25779000000"
               className="w-full md:w-auto bg-[#0D52FF] hover:bg-[#0b45d6] text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl transition-all duration-300 text-xs sm:text-sm font-semibold shadow-md shadow-blue-500/20 text-center inline-flex items-center justify-center gap-2"
             >
@@ -407,7 +461,7 @@ export default function ProtocolPage() {
 
       {/* TOP RECOMMENDED TRAINING SECTION */}
       <section className="w-full px-4 sm:px-6 md:px-8 lg:px-16 py-10 sm:py-14">
-        <motion.div 
+        <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
@@ -415,7 +469,7 @@ export default function ProtocolPage() {
           className="max-w-7xl mx-auto relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[360px] sm:min-h-[420px] md:aspect-[21/9] flex flex-col justify-end shadow-xl border border-blue-200/50 bg-gray-900"
         >
           <Image
-            src="/assets/elimi-images/regenerated_image_1787569893270.webp"
+            src="/assets/protocol/PROTOCOL_SECTION.webp"
             alt="Recommended Training"
             fill
             unoptimized
@@ -423,7 +477,7 @@ export default function ProtocolPage() {
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 pointer-events-none" />
-          
+
           <div className="relative z-10 w-full p-6 sm:p-8 lg:p-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
             <div className="space-y-3 sm:space-y-4 max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-[#0D52FF]/90 backdrop-blur-md px-3.5 py-1.5 rounded-lg text-white text-xs font-bold tracking-wider shadow-sm">
@@ -434,7 +488,8 @@ export default function ProtocolPage() {
                 The Art of International Protocol &amp; VIP Management by ELIMI
               </h2>
               <p className="text-xs sm:text-sm text-gray-200 max-w-lg">
-                Intensive certification covering diplomatic precedence, VIP convoy coordination, and summit etiquette.
+                Intensive certification covering diplomatic precedence, VIP
+                convoy coordination, and summit etiquette.
               </p>
             </div>
             <a
@@ -451,7 +506,7 @@ export default function ProtocolPage() {
       {/* HONORING TRADITIONS SECTION */}
       <section className="w-full bg-[#EBF3FF]/60 px-4 sm:px-6 md:px-8 lg:px-16 py-14 sm:py-20 lg:py-24 border-t border-b border-blue-100">
         <div className="max-w-7xl mx-auto space-y-10 sm:space-y-14">
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -465,11 +520,12 @@ export default function ProtocolPage() {
               Honoring Traditions, Elevating Occasions
             </h2>
             <p className="text-gray-600 text-sm sm:text-base font-medium">
-              Tailored for Diplomats, Executives &amp; High-Profile VIPs in Burundi.
+              Tailored for Diplomats, Executives &amp; High-Profile VIPs in
+              Burundi.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-40px" }}
@@ -477,11 +533,15 @@ export default function ProtocolPage() {
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8"
           >
             {[
-              '/assets/elimi-images/regenerated_image_1787569895057.webp',
-              'https://picsum.photos/seed/tradition2/600/800',
-              'https://picsum.photos/seed/tradition3/600/800'
+              "/assets/elimi-images/regenerated_image_1787569895057.webp",
+              "https://picsum.photos/seed/tradition2/600/800",
+              "https://picsum.photos/seed/tradition3/600/800",
             ].map((img, i) => (
-              <motion.div key={i} variants={fadeInUp} className="relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-4 border-white bg-gray-100">
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-4 border-white bg-gray-100"
+              >
                 <Image
                   src={img}
                   alt={`Tradition ${i + 1}`}
@@ -499,7 +559,7 @@ export default function ProtocolPage() {
       {/* ASSOCIATES & PARTNERS SECTION */}
       <section className="w-full bg-white px-4 sm:px-6 md:px-8 lg:px-16 py-14 sm:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -513,7 +573,8 @@ export default function ProtocolPage() {
               Associates &amp; Partners
             </h2>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Your trusted network of official liaison experts and diplomatic allies in Burundi.
+              Your trusted network of official liaison experts and diplomatic
+              allies in Burundi.
             </p>
             <div className="pt-2">
               <a
@@ -526,7 +587,7 @@ export default function ProtocolPage() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -534,9 +595,16 @@ export default function ProtocolPage() {
             className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 items-center justify-items-center"
           >
             {[
-              'ELIMI PARTNERS', 'BUJUMBURA HUB', 'BURUNDI ALLIANCE', 'E.A. ACADEMY'
+              "ELIMI PARTNERS",
+              "BUJUMBURA HUB",
+              "BURUNDI ALLIANCE",
+              "E.A. ACADEMY",
             ].map((logo, i) => (
-              <motion.div key={i} variants={fadeInUp} className="w-full bg-[#f8f9fc] border border-blue-100 p-4 sm:p-6 rounded-xl text-center font-serif text-xs sm:text-sm font-bold text-gray-700 hover:text-[#0D52FF] hover:border-blue-300 transition-all shadow-sm">
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="w-full bg-[#f8f9fc] border border-blue-100 p-4 sm:p-6 rounded-xl text-center font-serif text-xs sm:text-sm font-bold text-gray-700 hover:text-[#0D52FF] hover:border-blue-300 transition-all shadow-sm"
+              >
                 {logo}
               </motion.div>
             ))}
@@ -547,7 +615,7 @@ export default function ProtocolPage() {
       {/* OUR CLIENTS SECTION */}
       <section className="w-full bg-[#f8f9fc] px-4 sm:px-6 md:px-8 lg:px-16 py-14 sm:py-20 border-t border-gray-200/80">
         <div className="max-w-7xl mx-auto space-y-8 sm:space-y-10">
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -562,13 +630,16 @@ export default function ProtocolPage() {
                 Organizations &amp; Summit Delegations
               </h2>
             </div>
-            <Link href="tel:+25779000000" className="text-[#0D52FF] font-semibold text-xs sm:text-sm inline-flex items-center justify-center sm:justify-start gap-1 hover:underline">
+            <Link
+              href="tel:+25779000000"
+              className="text-[#0D52FF] font-semibold text-xs sm:text-sm inline-flex items-center justify-center sm:justify-start gap-1 hover:underline"
+            >
               <span>Book Protocol Team</span>
               <ChevronRight className="w-4 h-4" />
             </Link>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -576,9 +647,17 @@ export default function ProtocolPage() {
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 items-center justify-items-center"
           >
             {[
-              'ECOBANK BURUNDI', 'UNIVERSITY OF BURUNDI', 'BURUNDI INVEST', 'LUMITEL', 'MIN. OF CULTURE'
+              "ECOBANK BURUNDI",
+              "UNIVERSITY OF BURUNDI",
+              "BURUNDI INVEST",
+              "LUMITEL",
+              "MIN. OF CULTURE",
             ].map((logo, i) => (
-              <motion.div key={i} variants={fadeInUp} className="w-full bg-white border border-gray-200/80 p-3 sm:p-4 rounded-xl text-center text-[11px] sm:text-xs font-bold text-gray-600 tracking-wide shadow-sm">
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="w-full bg-white border border-gray-200/80 p-3 sm:p-4 rounded-xl text-center text-[11px] sm:text-xs font-bold text-gray-600 tracking-wide shadow-sm"
+              >
                 {logo}
               </motion.div>
             ))}
@@ -590,46 +669,144 @@ export default function ProtocolPage() {
       <footer className="w-full bg-[#0f172a] text-gray-300 px-4 sm:px-6 md:px-8 lg:px-16 py-12 sm:py-16 mt-auto border-t border-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 mb-12">
-            
             {/* Links Columns */}
             <div className="space-y-4">
-              <h4 className="text-white font-serif font-bold text-base sm:text-lg">Explore</h4>
+              <h4 className="text-white font-serif font-bold text-base sm:text-lg">
+                Explore
+              </h4>
               <ul className="space-y-2.5 text-xs sm:text-sm">
-                <li><Link href="/" className="hover:text-blue-400 transition-colors">Home</Link></li>
-                <li><Link href="/protocol" className="text-[#0D52FF] font-medium">VIP Protocol</Link></li>
-                <li><Link href="/cars" className="hover:text-blue-400 transition-colors">Fleet &amp; Cars</Link></li>
-                <li><Link href="/houses" className="hover:text-blue-400 transition-colors">Houses &amp; Estates</Link></li>
-                <li><Link href="/shop" className="hover:text-blue-400 transition-colors">Boutique</Link></li>
+                <li>
+                  <Link
+                    href="/"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/protocol" className="text-[#0D52FF] font-medium">
+                    VIP Protocol
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/cars"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Fleet &amp; Cars
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/houses"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Houses &amp; Estates
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/shop"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Boutique
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h4 className="text-white font-serif font-bold text-base sm:text-lg">Services</h4>
+              <h4 className="text-white font-serif font-bold text-base sm:text-lg">
+                Services
+              </h4>
               <ul className="space-y-2.5 text-xs sm:text-sm">
-                <li><a href="#services" className="hover:text-blue-400 transition-colors">VIP Airport Hosting</a></li>
-                <li><a href="#services" className="hover:text-blue-400 transition-colors">Summit Coordination</a></li>
-                <li><a href="#services" className="hover:text-blue-400 transition-colors">Diplomatic Escort</a></li>
-                <li><a href="#services" className="hover:text-blue-400 transition-colors">Protocol Academy</a></li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    VIP Airport Hosting
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Summit Coordination
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Diplomatic Escort
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Protocol Academy
+                  </a>
+                </li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h4 className="text-white font-serif font-bold text-base sm:text-lg">Pillars</h4>
+              <h4 className="text-white font-serif font-bold text-base sm:text-lg">
+                Pillars
+              </h4>
               <ul className="space-y-2.5 text-xs sm:text-sm">
-                <li><Link href="/cars" className="hover:text-blue-400 transition-colors">Armored Fleet &amp; Mobility</Link></li>
-                <li><Link href="/houses" className="hover:text-blue-400 transition-colors">Executive Residencies</Link></li>
-                <li><Link href="/protocol" className="hover:text-blue-400 transition-colors">Diplomatic Protocol</Link></li>
-                <li><Link href="/shop" className="hover:text-blue-400 transition-colors">Diplomatic Boutique</Link></li>
+                <li>
+                  <Link
+                    href="/cars"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Armored Fleet &amp; Mobility
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/houses"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Executive Residencies
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/protocol"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Diplomatic Protocol
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/shop"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Diplomatic Boutique
+                  </Link>
+                </li>
               </ul>
             </div>
 
             {/* Contact Information */}
             <div className="sm:col-span-2 space-y-4">
-              <h4 className="text-white font-serif font-bold text-base sm:text-lg">ELIMI Protocol Burundi</h4>
+              <h4 className="text-white font-serif font-bold text-base sm:text-lg">
+                ELIMI Protocol Burundi
+              </h4>
               <div className="space-y-3 text-xs sm:text-sm text-gray-300">
                 <p className="flex items-start gap-2.5">
                   <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-[#0D52FF]" />
-                  <span>Boulevard de l&apos;Uprona, Maison du Trésor, Bujumbura - Burundi</span>
+                  <span>
+                    Boulevard de l&apos;Uprona, Maison du Trésor, Bujumbura -
+                    Burundi
+                  </span>
                 </p>
                 <p className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 shrink-0 text-[#0D52FF]" />
@@ -643,26 +820,40 @@ export default function ProtocolPage() {
 
               {/* Socials */}
               <div className="flex items-center gap-3 pt-4 border-t border-gray-800">
-                <a href="#" className="w-8 h-8 rounded-full bg-slate-800 text-gray-300 flex items-center justify-center hover:bg-[#0D52FF] hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="w-8 h-8 rounded-full bg-slate-800 text-gray-300 flex items-center justify-center hover:bg-[#0D52FF] hover:text-white transition-colors"
+                >
                   <Instagram className="w-4 h-4" />
                 </a>
-                <a href="#" className="w-8 h-8 rounded-full bg-slate-800 text-gray-300 flex items-center justify-center hover:bg-[#0D52FF] hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="w-8 h-8 rounded-full bg-slate-800 text-gray-300 flex items-center justify-center hover:bg-[#0D52FF] hover:text-white transition-colors"
+                >
                   <Twitter className="w-4 h-4" />
                 </a>
-                <a href="#" className="w-8 h-8 rounded-full bg-slate-800 text-gray-300 flex items-center justify-center hover:bg-[#0D52FF] hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="w-8 h-8 rounded-full bg-slate-800 text-gray-300 flex items-center justify-center hover:bg-[#0D52FF] hover:text-white transition-colors"
+                >
                   <Linkedin className="w-4 h-4" />
                 </a>
               </div>
             </div>
-
           </div>
 
           <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400 text-center sm:text-left">
             <p>© 2026 ELIMI Protocol &amp; Events Management Burundi</p>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Diplomatic Escort Protocol</a>
+              <a href="#" className="hover:text-white transition-colors">
+                Terms
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                Privacy
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                Diplomatic Escort Protocol
+              </a>
             </div>
           </div>
         </div>

@@ -853,18 +853,18 @@ export default function MediaPage() {
                     <div className="bg-black/35 backdrop-blur-xl p-1 sm:p-1.5 rounded-full border border-white/35 shadow-[0_16px_36px_rgba(0,0,0,0.35)] ring-1 ring-white/20 flex items-center gap-1 sm:gap-1.5">
                       <button
                         onClick={() => {
-                          setActiveVideo(heroVideo);
-                          setIsPlayingModal(true);
+                          const el = document.getElementById("videos");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
                         }}
                         className="bg-[#0D52FF] hover:bg-[#0B44D8] text-white font-extrabold text-[10px] sm:text-xs lg:text-sm px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-[0_4px_14px_rgba(13,82,255,0.45)] transition-all hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap"
                       >
-                        Start Your Project
+                        Browse Our Media
                       </button>
                       <Link
                         href="/shop"
                         className="text-white/90 hover:text-white font-semibold text-[10px] sm:text-xs lg:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all hover:bg-white/15 backdrop-blur-md border border-white/10 whitespace-nowrap"
                       >
-                        Let&apos;s Collaborate
+                        Let&apos;s Shop
                       </Link>
                     </div>
                   </div>

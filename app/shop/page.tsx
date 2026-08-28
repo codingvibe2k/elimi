@@ -1,17 +1,29 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import ElimiHeader from '@/components/ElimiHeader';
-import ShopHero from '@/components/shop/ShopHero';
-import ProductGrid, { Product, BOUTIQUE_PRODUCTS } from '@/components/shop/ProductGrid';
-import ProductDetailModal from '@/components/shop/ProductDetailModal';
-import ShoppingCartDrawer, { CartItem } from '@/components/shop/ShoppingCartDrawer';
-import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Truck, RefreshCw, Phone, ShoppingBag } from 'lucide-react';
+import React, { useState } from "react";
+import ElimiHeader from "@/components/ElimiHeader";
+import ShopHero from "@/components/shop/ShopHero";
+import ProductGrid, {
+  Product,
+  BOUTIQUE_PRODUCTS,
+} from "@/components/shop/ProductGrid";
+import ProductDetailModal from "@/components/shop/ProductDetailModal";
+import ShoppingCartDrawer, {
+  CartItem,
+} from "@/components/shop/ShoppingCartDrawer";
+import Link from "next/link";
+import {
+  ArrowRight,
+  ShieldCheck,
+  Truck,
+  RefreshCw,
+  Phone,
+  ShoppingBag,
+} from "lucide-react";
 
 export default function ShopPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
 
@@ -27,7 +39,7 @@ export default function ShopPage() {
         return prev.map((item) =>
           item.product.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item
+            : item,
         );
       }
       return [...prev, { product, quantity: 1 }];
@@ -35,28 +47,34 @@ export default function ShopPage() {
   };
 
   const handleUpdateQuantity = (productId: string, delta: number) => {
-    setCartItems((prev) =>
-      prev
-        .map((item) => {
-          if (item.product.id === productId) {
-            const newQty = item.quantity + delta;
-            return newQty > 0 ? { ...item, quantity: newQty } : null;
-          }
-          return item;
-        })
-        .filter(Boolean) as CartItem[]
+    setCartItems(
+      (prev) =>
+        prev
+          .map((item) => {
+            if (item.product.id === productId) {
+              const newQty = item.quantity + delta;
+              return newQty > 0 ? { ...item, quantity: newQty } : null;
+            }
+            return item;
+          })
+          .filter(Boolean) as CartItem[],
     );
   };
 
   const handleRemoveItem = (productId: string) => {
-    setCartItems((prev) => prev.filter((item) => item.product.id !== productId));
+    setCartItems((prev) =>
+      prev.filter((item) => item.product.id !== productId),
+    );
   };
 
   const handleClearCart = () => {
     setCartItems([]);
   };
 
-  const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const totalCartCount = cartItems.reduce(
+    (acc, item) => acc + item.quantity,
+    0,
+  );
 
   return (
     <div className="min-h-screen w-full bg-[#F2F4F8] text-[#181B25] font-sans flex flex-col justify-between antialiased">
@@ -73,9 +91,9 @@ export default function ShopPage() {
           setSelectedCategory={setSelectedCategory}
           onSearchSubmit={() => {
             // Smoothly scroll to product grid if needed
-            const gridEl = document.getElementById('boutique-catalog');
+            const gridEl = document.getElementById("boutique-catalog");
             if (gridEl) {
-              gridEl.scrollIntoView({ behavior: 'smooth' });
+              gridEl.scrollIntoView({ behavior: "smooth" });
             }
           }}
         />
@@ -117,7 +135,8 @@ export default function ShopPage() {
                   Burundi & Diaspora Shipping
                 </h4>
                 <p className="text-xs text-[#525866]">
-                  Fast door-to-door delivery in Bujumbura, Gitega, and worldwide.
+                  Fast door-to-door delivery in Bujumbura, Gitega, and
+                  worldwide.
                 </p>
               </div>
             </div>
@@ -138,112 +157,6 @@ export default function ShopPage() {
           </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-[#0A2351] text-white py-12 px-4 sm:px-6 lg:px-8 border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-xl bg-[#0D52FF] text-white font-black flex items-center justify-center text-sm">
-                E
-              </div>
-              <span className="font-black text-xl tracking-tight">ELIMI Boutique</span>
-            </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Burundi&apos;s premier digital marketplace for luxury fashion, modern tech, authentic cultural crafts, and beauty products.
-            </p>
-          </div>
-
-          <div>
-            <h5 className="font-bold text-xs uppercase tracking-wider text-[#0D52FF] mb-3">
-              Categories
-            </h5>
-            <ul className="space-y-2 text-xs text-slate-300">
-              <li>
-                <button
-                  onClick={() => setSelectedCategory('Fashion')}
-                  className="hover:text-white transition cursor-pointer"
-                >
-                  Fashion & Accessories
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setSelectedCategory('Electronics')}
-                  className="hover:text-white transition cursor-pointer"
-                >
-                  Electronics & Tech
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setSelectedCategory('Cultural')}
-                  className="hover:text-white transition cursor-pointer"
-                >
-                  Cultural Heritage Crafts
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setSelectedCategory('Nails & Beauty')}
-                  className="hover:text-white transition cursor-pointer"
-                >
-                  Nails & Beauty
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="font-bold text-xs uppercase tracking-wider text-[#0D52FF] mb-3">
-              ELIMI Ecosystem
-            </h5>
-            <ul className="space-y-2 text-xs text-slate-300">
-              <li>
-                <Link href="/" className="hover:text-white transition">
-                  Mobility & Living (Rent/Buy)
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-white transition">
-                  Turnkey Event Bundles
-                </Link>
-              </li>
-              <li>
-                <Link href="/media" className="hover:text-white transition">
-                  Elimi Média (Watch &amp; Shop)
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="font-bold text-xs uppercase tracking-wider text-[#0D52FF] mb-3">
-              Direct Contact
-            </h5>
-            <div className="space-y-2 text-xs text-slate-300">
-              <p>📍 Boulevard Mwezi Gisabo, Bujumbura</p>
-              <p>📞 Phone: +257 64 44 45 46</p>
-              <p>💬 WhatsApp Concierge Lundi - Vendredi : 9h - 17h</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-[1400px] mx-auto mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-          <p>© {new Date().getFullYear()} ELIMI Platform. All rights reserved.</p>
-          <div className="flex gap-4">
-            <Link href="/" className="hover:text-white transition">
-              Home
-            </Link>
-            <Link href="/shop" className="hover:text-white transition">
-              Boutique
-            </Link>
-            <Link href="/media" className="hover:text-white transition">
-              Média
-            </Link>
-          </div>
-        </div>
-      </footer>
 
       {/* Floating Shopping Bag Button */}
       <button
